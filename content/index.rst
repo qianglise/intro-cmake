@@ -1,13 +1,33 @@
-LESSON NAME
+Introduction to CMake
 ===========
 
-Intro
+
+CMake is a language-agnostic, cross-platform build tool and is nowadays the *de facto* standard, with large projects using it to reliably build, test, and deploy their codebases.
+
+CMake is not a build system itself, but it generates another system's build files.
+
+In this workshop, you will learn
+- Write a CMake build system for C/C++ and Fortran projects producing libraries and/or executables.
+- Run tests for your code with `CTest`.
+- Ensure your build system will work on different platforms.
+- (optional) Detect and use external dependencies in your project.
+- (optional) Safely and effectively build mixed-language projects (Python+C/C++, Python+Fortran, Fortran+C/C++)
 
 
 
 .. prereq::
 
-   prerequisites
+   Before attending this workshop, please make sure that you have access to a computer with a compiler for your favorite programming language and a recent version of CMake.
+   
+   If you have access to a supercomputer (e.g. a `NAISS system <https://www.naiss.se/>`_) with a compute allocation you can use that during    the workshop. Any questions on how to use a particular HPC resource should be    directed to the appropriate support desk.
+   
+   You can also use your own computer for this workshop, provided that it has the necessary tools installed.
+   - If you do not already have these installed, we recommend that you set up an isolated software environment using ``conda``.
+   - For Windows computers we recommend to use the ``Windows Subsystem for Linux (WSL)``. Detailed instructions can be found
+   on the :doc:`setup` page.
+
+
+
 
 
 
