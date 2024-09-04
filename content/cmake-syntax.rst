@@ -147,3 +147,70 @@ Help on a specific built-in module can be obtained with:
    $ cmake --help-module CMakePrintHelpers
 
 
+
+Flow control
+------------
+
+
+The ``if`` and ``foreach`` commands are available as flow control constructs in the CMake DSL and you are surely familiar with their use in other programming languages.
+
+Since *all* variables in CMake are strings, the syntax for ``if`` and ``foreach`` appears in a few different variants.
+
+.. signature:: ``if``
+
+   .. code-block:: cmake
+
+      if(<condition>)
+        # <commands>
+      elseif(<condition>) # optional block, can be repeated
+        # <commands>
+      else()              # optional block
+        # <commands>
+      endif()
+
+The truth value of the conditions in the ``if`` and ``elseif`` blocks is determined by boolean operators. In the CMake DSL:
+
+- True is any expression evaluating to: ``1``, ``ON``, ``TRUE``, ``YES``, and
+  ``Y``.
+- False is any expression evaluating to: ``0``, ``OFF``, ``FALSE``, ``NO``,
+  ``N``, ``IGNORE``, and ``NOTFOUND``.
+
+
+CMake offers boolean operator for string comparisons, such as ``STREQUAL`` for string equality, and for version comparisons, such as ``VERSION_EQUAL``.
+
+
+.. callout:: Variable expansions in conditionals
+
+   The ``if`` command expands the contents of variables before evaluating their
+   truth value. See `official documentation <https://cmake.org/cmake/help/latest/command/if.html?highlight=#variable-expansion>`_ for further details.
+
+
+.. exercise:: Exercise 2: Conditionals in CMake
+
+   Modify the ``CMakeLists.txt`` from the previous exercise to build either a *static* or a *shared* library depending on the value of the boolean ``MAKE_SHARED_LIBRARY``:
+
+   1. Define the ``MAKE_SHARED_LIBRARY`` variable.
+   2. Write a conditional checking the variable. In each branch call ``add_library`` appropriately.
+
+   .. tabs::
+
+      .. tab:: C++
+
+         You can find a scaffold project in the ``content/code/02_conditionals-cxx`` folder. A working solution is in the ``solution`` subfolder.
+
+      .. tab:: Fortran
+
+         You can find a scaffold project in the ``content/code/02_conditionals-f`` folder. A working solution is in the ``solution`` subfolder.
+
+
+You can perform the same operation on a collection of items with ``foreach``:
+
+.. signature:: |foreach|
+
+   .. code-block:: cmake
+
+      foreach(<loop_var> <items>)
+        # <commands>
+      endforeach()
+
+The list of items is either space- or ;-separated. ``break()`` and ``continue()`` are also available.
