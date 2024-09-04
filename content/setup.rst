@@ -28,3 +28,19 @@ MacOS and Linux users can simply open a terminal and install
 - For Linux see `HERE <https://docs.conda.io/en/latest/miniconda.html#linux-installers>`_.
 
 
+Creating an environment and installing packages
+-----------------------------------------------
+
+
+Once you have ``conda`` installed (and ``WSL`` if you're using Windows OS) you can use the :download:`environment.yml <../environment.yml>` file to install dependencies.
+
+First save it to your hard drive by clicking the link, and then in a terminal navigate to where you saved the file and type::
+
+  conda env create -f environment.yml
+
+You then need to activate the new environment by::
+
+  conda activate intro-to-cmake
+
+Now you should have CMake, compilers, Python and a few other packages installed!
+
