@@ -243,3 +243,68 @@ We refer to these stages as *CMake times* and each tool is appropriate at a spec
 
    You can manage all these stages of a software project's lifetime with tools provided by CMake. This figure shows all these stages (*times*) and which tool is appropriate for each. This figure is reproduced from `CMake Cookbook <https://github.com/dev-cafe/cmake-cookbook>`_ and is licensed under the terms of the `CC-BY-SA <https://creativecommons.org/licenses/by-sa/4.0/legalcode>`_.
 
+
+Producing libraries
+-------------------
+
+CMake can of course be used to produce libraries as well as executables. The relevant command is ``add_library``:
+
+.. signature:: ``add_library``
+
+   .. code-block:: cmake
+
+      add_library(<name> [STATIC | SHARED | MODULE]
+                  [EXCLUDE_FROM_ALL]
+                  [<source>...])
+
+You can link libraries into executables with ``target_link_libraries``:
+
+.. signature:: ``target_link_libraries``
+
+   .. code-block:: cmake
+
+      target_link_libraries(<target>
+                            <PRIVATE|PUBLIC|INTERFACE> <item>...
+                           [<PRIVATE|PUBLIC|INTERFACE> <item>...]...)
+
+.. callout:: Executables and libraries are targets
+
+   We will encounter the term **target** repeatedly. In CMake, a target is any object given as first argument to ``add_executable`` or ``add_library``. Targets are the basic atom in CMake. Whenever you will need to organize complex projects, think in terms of its targets and their mutual dependencies.
+   
+   The whole family of CMake commands ``target_*`` can be used to express chains of dependencies and is much more effective than keeping track of state with variables. We will clarify these concepts in :ref:`targets`.
+
+
+.. exercise:: Exercise 1: Producing libraries
+
+   .. tabs::
+
+      .. tab:: C++
+
+         You can find a scaffold project in the ``content/code/01_libraries-cxx`` folder.
+
+         #. Write a ``CMakeLists.txt`` to compile the source files ``Message.hpp`` and  ``Message.cpp`` into a library. **DO NOT** specify the type of library, shared or static, explicitly.
+         #. Add an executable from the ``hello-world.cpp`` source file.
+         #. Link the library into the executable.
+
+         A working solution is in the ``solution`` subfolder.
+
+      .. tab:: Fortran
+
+         You can find a scaffold project in the ``content/code/01_libraries-f`` folder.
+
+         #. Write a ``CMakeLists.txt`` to compile the source files ``message.f90`` into a library. **DO NOT** specify the type of library shared or static, explicitly.
+         #. Add an executable from the ``hello-world.f90`` source file.
+         #. Link the library into the executable.
+
+         A working solution is in the ``solution`` subfolder.
+
+   What kind of library did you get? Static or shared?
+
+
+.. keypoints::
+
+   - CMake is a **build system generator**, not a build system.
+   - You write ``CMakeLists.txt`` to describe how the build tools will create artifacts from sources.
+   - You can use the CMake suite of tools to manage the whole lifetime: from source files to tests to deployment.
+   - The structure of the project is mirrored in the build folder.
+
