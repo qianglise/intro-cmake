@@ -111,7 +111,7 @@ Important issues for the ``CMakeLists.txt`` file
 1. Any CMake build system will invoke the following commands in its **root**
    ``CMakeLists.txt``:
 
-   .. signature:: |cmake_minimum_required|
+   .. signature:: ``cmake_minimum_required``
 
       .. code-block:: cmake
 
@@ -120,6 +120,7 @@ Important issues for the ``CMakeLists.txt`` file
    .. parameters::
 
       ``VERSION``: Minimum and, optionally, maximum version of CMake to use.
+
       ``FATAL_ERROR``: Raise a fatal error if the version constraint is not satisfied. This option is ignored by CMake >=2.6
 
    .. signature:: |project|
@@ -135,6 +136,7 @@ Important issues for the ``CMakeLists.txt`` file
    .. parameters::
 
       ``<PROJECT-NAME>``: The name of the project.
+
       ``LANGUAGES``: Languages in the project.
 
 
