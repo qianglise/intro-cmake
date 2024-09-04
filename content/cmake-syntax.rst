@@ -205,7 +205,7 @@ CMake offers boolean operator for string comparisons, such as ``STREQUAL`` for s
 
 You can perform the same operation on a collection of items with ``foreach``:
 
-.. signature:: |foreach|
+.. signature:: ``foreach``
 
    .. code-block:: cmake
 
@@ -214,3 +214,4 @@ You can perform the same operation on a collection of items with ``foreach``:
       endforeach()
 
 The list of items is either space- or ;-separated. ``break()`` and ``continue()`` are also available.
+
