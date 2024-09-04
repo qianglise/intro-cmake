@@ -123,7 +123,7 @@ Important issues for the ``CMakeLists.txt`` file
 
       ``FATAL_ERROR``: Raise a fatal error if the version constraint is not satisfied. This option is ignored by CMake >=2.6
 
-   .. signature:: |project|
+   .. signature:: ``project``
 
       .. code-block:: cmake
 
@@ -143,9 +143,9 @@ Important issues for the ``CMakeLists.txt`` file
 2. The case of CMake commands does not matter: the DSL is case-insensitive. However, the plain-text files that CMake parses **must be called** ``CMakeLists.txt`` and the case matters! The variable names are also case sensitive!
 
 
-3. The command to add executables to the build system is |add_executable|:
+3. The command to add executables to the build system is ``add_executable``:
 
-   .. signature:: |add_executable|
+   .. signature:: ``add_executable``
 
       .. code-block:: cmake
 
