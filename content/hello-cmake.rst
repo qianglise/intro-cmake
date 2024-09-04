@@ -227,5 +227,19 @@ Important issues for the ``CMakeLists.txt`` file
       $ cmake --help-variable CMAKE_GENERATOR
 
 
+A complete toolchain
+--------------------
 
+
+The family of tools provided with CMake offers a complete toolchain to manage the development cycle: from sources to build artifacts, testing, and deployment.
+We refer to these stages as *CMake times* and each tool is appropriate at a specific time. In this workshop, we will discuss:
+
+- **CMake time** or **configure time**. This is the stage when ``cmake`` is invoked to parse the ``CMakeLists.txt`` in your project, configure and generate the build system.
+- **Build time**. This is handled by the native build tools, but, as we have seen, these can be effectively wrapped by ``cmake`` itself.
+- **CTest time** or **test time**. At this stage, you will test your build artifacts.
+
+.. figure:: img/cmake-times.jpg
+   :align: center
+
+   You can manage all these stages of a software project's lifetime with tools provided by CMake. This figure shows all these stages (*times*) and which tool is appropriate for each. This figure is reproduced from `CMake Cookbook <https://github.com/dev-cafe/cmake-cookbook>`_ and is licensed under the terms of the `CC-BY-SA <https://creativecommons.org/licenses/by-sa/4.0/legalcode>`_.
 
