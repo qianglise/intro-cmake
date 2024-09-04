@@ -121,6 +121,29 @@ Help on a specific built-in command, function or macro can be obtained with:
    $ cmake --help-command target_link_libraries
 
 
+Modules
++++++++
 
+
+These are collections of functions and macros and are either CMake- or user-defined. CMake comes with a rich ecosystem of modules and you will probably write a few of your own to encapulate frequently used functions or macros in your CMake scripts.
+
+You will have to include the module to use its contents, for example:
+
+.. code-block:: cmake
+
+   include(CMakePrintHelpers)
+
+
+The full list of built-in modules is available with:
+
+.. code-block:: bash
+
+   $ cmake --help-module-list
+
+Help on a specific built-in module can be obtained with:
+
+.. code-block:: bash
+
+   $ cmake --help-module CMakePrintHelpers
 
 
