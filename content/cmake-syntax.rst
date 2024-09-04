@@ -15,18 +15,83 @@ CMake syntax
 
    - Learn how to define variables with ``set`` and use them with the ``${}``
      operator for `variable references <https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#variable-references>`_.
-   - Learn the syntax for conditionals in CMake: |if| - ``elseif`` - ``else`` - ``endif``
-   - Learn the syntax for loops in CMake: |foreach|
+   - Learn the syntax for conditionals in CMake: ``if`` - ``elseif`` - ``else`` - ``endif``
+   - Learn the syntax for loops in CMake: ``foreach``
    - Learn how CMake structures build artifacts.
    - Learn how to print helpful messages.
-   - Learn how to handle user-facing options: |option| and the role of CMake cache.
+   - Learn how to handle user-facing options: ``option`` and the role of CMake cache.
 
 
-CMake offers a *domain-specific language* (DSL) to describe how to generate a build system native to the specific platform you might be running on. In this episode, we will get acquainted with its syntax.
+CMake offers a **domain-specific language** (DSL) to describe how to generate a build system native to the specific platform you might be running on. In this episode, we will get acquainted with its syntax.
 
 
+The CMake DSL
+-------------
 
 
+Remember that the DSL is **case-insensitive**. We will now have a look at its main elements.
+
+
+Variables
++++++++++
+
+
+These are either CMake- or user-defined variables. You can obtain the list of CMake-defined variables with the command:
+
+.. code-block:: bash
+
+   $ cmake --help-variable-list
+
+You can create a new variable with the ``set`` command:
+
+.. signature:: ``set``
+
+   .. code-block:: cmake
+
+      set(<variable> <value>... [PARENT_SCOPE])
+
+
+Variables in CMake are always of string type, but certain commands can interpret them as other types. If you want to declare a *list* variable, you will have to provide it as a ;-separated string. Lists can be manipulated with the ``list`` family of commands.
+
+You can inspect the value of any variable by *dereferencing* it with the ``${}`` operator, as in bash shell. For example, the following snippet sets the content of ``hello`` variable and then prints it:
+
+.. code-block:: cmake
+
+   set(hello "world")
+   message("hello ${hello}")
+
+
+Two notes about **variable references**:
+
+- if the variable within the ``${}`` operator is not set, you will get an empty string.
+- you can *nest* variable references: ``${outer_${inner_variable}_variable}``. They will be evaluated from the inside out.
+
+
+One of the most confusing aspects in CMake is the **scoping of variables**. There are three variable scopes in the DSL:
+
+- **Function**: In effect when a variable is ``set`` within a function, the variable
+  will be visible within the function, but not outside.
+- **Directory**: In effect when processing a ``CMakeLists.txt`` in a directory, variables in the parent folder will be available, but any that is ``set`` in the current folder will not be propagated to the parent.
+- **Cache**: These variables are **persistent** across calls to ``cmake`` and available to all scopes in the project. Modifying a cache variable requires using a special form of the ``set`` function:
+
+  .. signature:: |set|
+
+     .. code-block:: cmake
+
+        set(<variable> <value>... CACHE <type> <docstring> [FORCE])
+
+
+Here is a list of few **CMake-defined variables**:
+
+- ``PROJECT_BINARY_DIR``. This is the build folder for the project.
+- ``PROJECT_SOURCE_DIR``. This is the location of the root ``CMakeLists.txt`` in the project.
+- ``CMAKE_CURRENT_LIST_DIR``. This is the folder for the ``CMakeLists.txt`` currently being processed.
+
+Help on a specific built-in variable can be obtained with:
+
+.. code-block:: bash
+
+   $ cmake --help-variable PROJECT_BINARY_DIR
 
 
 
