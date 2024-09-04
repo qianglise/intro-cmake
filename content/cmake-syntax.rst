@@ -69,12 +69,11 @@ Two notes about **variable references**:
 
 One of the most confusing aspects in CMake is the **scoping of variables**. There are three variable scopes in the DSL:
 
-- **Function**: In effect when a variable is ``set`` within a function, the variable
-  will be visible within the function, but not outside.
+- **Function**: In effect when a variable is ``set`` within a function, the variable will be visible within the function, but not outside.
 - **Directory**: In effect when processing a ``CMakeLists.txt`` in a directory, variables in the parent folder will be available, but any that is ``set`` in the current folder will not be propagated to the parent.
 - **Cache**: These variables are **persistent** across calls to ``cmake`` and available to all scopes in the project. Modifying a cache variable requires using a special form of the ``set`` function:
 
-  .. signature:: |set|
+  .. signature:: ``set``
 
      .. code-block:: cmake
 
@@ -92,6 +91,36 @@ Help on a specific built-in variable can be obtained with:
 .. code-block:: bash
 
    $ cmake --help-variable PROJECT_BINARY_DIR
+
+
+Commands
+++++++++
+
+
+These are provided by CMake and are essential building blocks of the DSL, as they allow you to manipulate variables. They include control flow constructs and the ``target_*`` family of commands.
+
+You can find a complete list of available commands with:
+
+.. code-block:: bash
+
+   $ cmake --help-command-list
+
+
+**Functions** and **macros** are built on top of the basic built-in commands and are either CMake- or user-defined. These prove useful to avoid repetition in your CMake scripts.
+
+The difference between a function and a macro is their *scope*:
+
+- **Functions** have their own scope: variables defined inside a function are not propagated back to the caller.
+- **Macros** do not have their own scope: variables from the parent scope can be modified and new variables in the parent scope can be set.
+
+
+Help on a specific built-in command, function or macro can be obtained with:
+
+.. code-block:: bash
+
+   $ cmake --help-command target_link_libraries
+
+
 
 
 
