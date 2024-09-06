@@ -96,6 +96,30 @@ You can get the current value of any property with ``get_property`` and set the 
 
 
 
+Visibility levels
+-----------------
 
+
+Why it is robust to use targets and properties than using variables? Given a target ``tgtX``, we can invoke one command in the ``target_*`` family as follows.
+
+.. code-block:: cmake
+
+   target_link_libraries(tgtX
+     PRIVATE tgt1
+     INTERFACE tgt2
+     PUBLIC tgt3
+     )
+
+
+.. figure:: img/target_inheritance.svg
+   :align: center
+
+   Properties on targets have varied **visibility levels**, which determine how CMake should propagate them between interdependent targets.
+
+
+.. typealong:: Understanding visibility levels
+
+
+	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will demonstrate their difference in details.
 
 
