@@ -215,3 +215,46 @@ You can perform the same operation on a collection of items with ``foreach``:
 
 The list of items is either space- or ;-separated. ``break()`` and ``continue()`` are also available.
 
+
+.. typealong:: Loops in CMake
+
+   In this typealong, we will show how to use ``foreach`` and lists in CMake. We will work from a scaffold project in the ``content/code/03_loops-cxx`` folder.
+
+   The goal is to compile a library from a bunch of source files: some of them are to be compiled with ``-O3`` optimization level, while some others with ``-O2``. We will set the compilation flags as properties on the library target. Targets and properties will be discussed at greater length in :ref:`targets`.
+
+   A working solution is in the ``solution`` subfolder.
+
+   It is instructive to browse the build folder for the project:
+
+   .. code-block:: bash
+
+      $ tree -L 2 build
+
+      build
+      ├── CMakeCache.txt
+      ├── CMakeFiles
+      │   ├── 3.18.4
+      │   ├── cmake.check_cache
+      │   ├── CMakeDirectoryInformation.cmake
+      │   ├── CMakeOutput.log
+      │   ├── CMakeTmp
+      │   ├── compute-areas.dir
+      │   ├── geometry.dir
+      │   ├── Makefile2
+      │   ├── Makefile.cmake
+      │   ├── progress.marks
+      │   └── TargetDirectories.txt
+      ├── cmake_install.cmake
+      ├── compute-areas
+      ├── libgeometry.a
+      └── Makefile
+
+   We note that:
+
+   - The project was configured with ``Makefile`` generator.
+   - The cache is a plain-text file ``CMakeCache.txt``.
+   - For every target in the project, CMake will create a subfolder ``<target>.dir`` under ``CMakeFiles``. The intermediate object files are stored in these folders, together with compiler flags and link line.
+   - The build artifacts, ``compute-areas`` and ``libgeometry.a``,  are stored at the root of the build tree.
+
+
+
