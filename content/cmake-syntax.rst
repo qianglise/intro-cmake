@@ -258,3 +258,48 @@ The list of items is either space- or ;-separated. ``break()`` and ``continue()`
 
 
 
+Printing messages
+-----------------
+
+You will most likely have to engage in debugging your CMake scripts at some point. Print-based debugging is the most effective way and the main workhorse for this will be the ``message`` command:
+
+.. signature:: |message|
+
+   .. code-block:: cmake
+
+      message([<mode>] "message to display")
+
+.. parameters::
+
+   ``<mode>``
+       What type of message to display, for example:
+
+         - ``STATUS``, for incidental information.
+         - ``FATAL_ERROR``, to report an error that prevents further processing and generation.
+
+
+It should be noted that ``message`` can be a bit awkward to work with, especially when you want to print the name *and* value of a variable. Including the built-in module ``CMakePrintHelpers`` will make your life easier when debugging, since it provides the ``cmake_print_variables`` function:
+
+.. signature:: |cmake_print_variables|
+
+   .. code-block:: cmake
+
+      cmake_print_variables(var1 var2 ... varN)
+
+   This command accepts an arbitrary number of variables and prints their name *and* value to standard output.
+   For example:
+
+   .. code-block:: cmake
+
+      include(CMakePrintHelpers)
+      cmake_print_variables(CMAKE_C_COMPILER CMAKE_MAJOR_VERSION DOES_NOT_EXIST)
+
+   gives:
+
+   .. code-block:: text
+
+      -- CMAKE_C_COMPILER="/usr/bin/gcc" ; CMAKE_MAJOR_VERSION="2" ; DOES_NOT_EXIST=""
+
+
+
+
