@@ -263,7 +263,7 @@ Printing messages
 
 You will most likely have to engage in debugging your CMake scripts at some point. Print-based debugging is the most effective way and the main workhorse for this will be the ``message`` command:
 
-.. signature:: |message|
+.. signature:: ``message``
 
    .. code-block:: cmake
 
@@ -280,7 +280,7 @@ You will most likely have to engage in debugging your CMake scripts at some poin
 
 It should be noted that ``message`` can be a bit awkward to work with, especially when you want to print the name *and* value of a variable. Including the built-in module ``CMakePrintHelpers`` will make your life easier when debugging, since it provides the ``cmake_print_variables`` function:
 
-.. signature:: |cmake_print_variables|
+.. signature:: ``cmake_print_variables``
 
    .. code-block:: cmake
 
@@ -301,5 +301,11 @@ It should be noted that ``message`` can be a bit awkward to work with, especiall
       -- CMAKE_C_COMPILER="/usr/bin/gcc" ; CMAKE_MAJOR_VERSION="2" ; DOES_NOT_EXIST=""
 
 
+
+.. keypoints::
+
+   - CMake offers a full-fledged DSL which empowers you to write complex ``CMakeLists.txt``.
+   - Variables have scoping rules.
+   - The structure of the project is mirrored in the build folder.
 
 
