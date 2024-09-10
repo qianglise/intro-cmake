@@ -53,3 +53,33 @@ Take a look at the ``CMakeLists.txt``:
    :emphasize-lines: 17
 
 
+.. exercise:: Testing the 3 different visibility levels
+
+   1. Browse, configure, build, and run the code.
+
+   2. Uncomment the highlighted line (line 17) with ``target_compile_definitions``, configure into a fresh folder, and build using the commands below. You will see that the definition is used in ``world.cpp`` but nowhere else.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_private
+         $ cmake --build build_private
+
+   3. Change the definition to ``PUBLIC``, configure into a fresh folder, and build. You will see that the definition is used both in ``world.cpp`` and ``hello_world.cpp``.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_public
+         $ cmake --build build_public
+
+   4. Then change the definition to ``INTERFACE``, configure into a fresh folder, and build. You will see that the definition is used only in ``hello_world.cpp`` but not in ``world.cpp``.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_interface
+         $ cmake --build build_interface
+
+
+
+
+
+
