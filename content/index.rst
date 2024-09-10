@@ -69,7 +69,6 @@ In this workshop, you will learn
    40 min ; :doc:`hello-ctest`
    40 min ; :doc:`probing`
    40 min ; :doc:`targets`
-   30 min ; :doc:`targets-new-visibility-levels`
    35 min ; :doc:`python-bindings`
    20 min ; :doc:`tips-and-tricks`
 

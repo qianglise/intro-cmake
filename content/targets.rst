@@ -94,55 +94,92 @@ Why it is robust to use targets and properties than using variables? Given a tar
 
 .. typealong:: Understanding visibility levels
 
-	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
+
+Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
 	
-	In this demo, we want to compile a C++ library and an executable. A complete source code and solution are available in the ``content/code/xx_visibility-levels/`` folder.
-	
-	* The library code in the ``account`` subfolder consists of one source (account.cpp) and one header file (account.hpp). This header file and the shared library are needed to produce the ``bank`` executable.
-	* The compiler flag ``-ffast-math`` will be used to propaged throughout the project.
-	* The executable code is in ``bank.cpp``, which includes the header file ``account.hpp``.
-	
-	More description about the source code:
+In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/xx_visibility-levels/`` folder.
 
-   1. The ``account`` target declares the ``account.cpp`` source file as ``PRIVATE`` since it is only needed to produce the shared library.
+.. code-block:: bash
 
-      .. code-block:: cmake
+   .
+   ├── CMakeLists.txt
+   ├── greeting
+   │   ├── greeting.cpp
+   │   └── greeting.hpp
+   ├── hello_world
+   │   ├── hello_world.cpp
+   │   └── hello_world.hpp
+   ├── main.cpp
+   └── world
+       ├── world.cpp
+       └── world.hpp
 
-         target_sources(account
-           PRIVATE
-             account.cpp
-           )
 
-   2. The ``-ffast-math`` is instead ``PUBLIC`` as it needs to be propagated to all targets consuming ``account``.
+In this source code, the main function links to greeting which links to hello_world which links to world.
 
-      .. code-block:: cmake
 
-         target_compile_options(account
-           PUBLIC
-             "-ffast-math"
-           )
+.. typealong:: The internal dependency tree
 
-   3. The ``account`` folder is an include directory with ``INTERFACE`` visibility because only targets consuming ``account`` need to know where ``account.hpp`` is located.
+   If you have installed ``Graphviz``, you can visualize the dependencies between these targets:
 
-      .. code-block:: cmake
+   .. code-block:: console
 
-         target_include_directories(account
-           INTERFACE
-             ${CMAKE_CURRENT_SOURCE_DIR}
-           )
+      $ cd build
+      $ cmake --graphviz=project.dot ..
+      $ dot -T svg project.dot -o graphviz-greeting-hello-world.svg
 
-   .. callout:: Rule of thumb for visibility settings
+   .. figure:: img/graphviz-greeting-hello-world.svg
+      :align: center
 
-	   When working out which visibility settings to use for the properties of your targets you can refer to the following table:
+      The dependencies between the four targets in the code example.
+ 
 
-      ==============  ================ ============
-         Who needs?             Others
-      --------------  -----------------------------
-         Target            **YES**           **NO**
-      ==============  ================ ============
-         **YES**       ``PUBLIC``       ``PRIVATE``
-         **NO**        ``INTERFACE``     N/A
-      ==============  ================ ============
+
+Take a look at the ``CMakeLists.txt``:
+
+
+.. literalinclude:: code/xx_visibility-levels-CR/CMakeLists.txt
+   :language: cmake
+   :linenos:
+   :emphasize-lines: 17
+
+
+.. exercise:: Testing the 3 different visibility levels
+
+   1. Browse, configure, build, and run the code.
+
+   2. Uncomment the highlighted line (line 17) with ``target_compile_definitions``, configure into a fresh folder, and build using the commands below. You will see that the definition is used in ``world.cpp`` but nowhere else.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_private
+         $ cmake --build build_private
+
+   3. Change the definition to ``PUBLIC``, configure into a fresh folder, and build. You will see that the definition is used both in ``world.cpp`` and ``hello_world.cpp``.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_public
+         $ cmake --build build_public
+
+   4. Then change the definition to ``INTERFACE``, configure into a fresh folder, and build. You will see that the definition is used only in ``hello_world.cpp`` but not in ``world.cpp``.
+
+      .. code-block:: console
+
+         $ cmake -S. -Bbuild_interface
+         $ cmake --build build_interface
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -169,6 +206,29 @@ For a complete list of properties known to CMake:
 
 
 You can get the current value of any property with ``get_property`` and set the value of any property with ``set_property``.
+
+
+
+Multiple folders
+----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
