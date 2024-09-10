@@ -64,14 +64,13 @@ In this workshop, you will learn
    :widths: auto
    :delim: ;
 
-   30 min ; :doc:`hello-cmake`
-   40 min ; :doc:`cmake-syntax`
+   20 min ; :doc:`hello-cmake`
+   30 min ; :doc:`cmake-syntax`
    40 min ; :doc:`hello-ctest`
    40 min ; :doc:`probing`
    40 min ; :doc:`targets`
-   .. 30 min ; :doc:`dependencies`
-   .. 40 min ; :doc:`fetch-content`
-   .. 35 min ; :doc:`python-bindings`
+   30 min ; :doc:`targets-new-visibility-levels`
+   35 min ; :doc:`python-bindings`
    20 min ; :doc:`tips-and-tricks`
 
 
@@ -79,9 +78,9 @@ In this workshop, you will learn
    :maxdepth: 1
    :caption: Reference
 
-   .. quick-reference
-   .. zbibliography
-   .. guide
+   quick-reference
+   zbibliography
+   guide
 
 
 
