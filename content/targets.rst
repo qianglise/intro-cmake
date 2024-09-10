@@ -130,7 +130,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
 	
 	More description about the source code:
 
-	1. The ``account`` target declares the ``account.cpp`` source file as ``PRIVATE`` since it is only needed to produce the shared library.
+   1. The ``account`` target declares the ``account.cpp`` source file as ``PRIVATE`` since it is only needed to produce the shared library.
 
       .. code-block:: cmake
 
@@ -139,7 +139,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
              account.cpp
            )
 
-	2. The ``-ffast-math`` is instead ``PUBLIC`` as it needs to be propagated to all targets consuming ``account``.
+   2. The ``-ffast-math`` is instead ``PUBLIC`` as it needs to be propagated to all targets consuming ``account``.
 
       .. code-block:: cmake
 
@@ -148,7 +148,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
              "-ffast-math"
            )
 
-	3. The ``account`` folder is an include directory with ``INTERFACE`` visibility because only targets consuming ``account`` need to know where ``account.hpp`` is located.
+   3. The ``account`` folder is an include directory with ``INTERFACE`` visibility because only targets consuming ``account`` need to know where ``account.hpp`` is located.
 
       .. code-block:: cmake
 
@@ -157,7 +157,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
              ${CMAKE_CURRENT_SOURCE_DIR}
            )
 
-	.. callout:: Rule of thumb for visibility settings
+   .. callout:: Rule of thumb for visibility settings
 
 	   When working out which visibility settings to use for the properties of your targets you can refer to the following table:
 
