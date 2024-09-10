@@ -8,31 +8,21 @@ Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful an
 	
 In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/xx_visibility-levels/`` folder.
 
-  .
-  ├── CMakeLists.txt
-  ├── greeting
-  │   ├── greeting.cpp
-  │   └── greeting.hpp
-  ├── hello_world
-  │   ├── hello_world.cpp
-  │   └── hello_world.hpp
-  ├── main.cpp
-  └── world
-      ├── world.cpp
-      └── world.hpp
+.. code-block:: bash
 
-    .
-    ├── CMakeLists.txt
-    ├── greeting
-    │   ├── greeting.cpp
-    │   └── greeting.hpp
-    ├── hello_world
-    │   ├── hello_world.cpp
-    │   └── hello_world.hpp
-    ├── main.cpp
-    └── world
-        ├── world.cpp
-        └── world.hpp
+   .
+   ├── CMakeLists.txt
+   ├── greeting
+   │   ├── greeting.cpp
+   │   └── greeting.hpp
+   ├── hello_world
+   │   ├── hello_world.cpp
+   │   └── hello_world.hpp
+   ├── main.cpp
+   └── world
+       ├── world.cpp
+       └── world.hpp
+
 
 In this source code, the main function links to greeting which links to hello_world which links to world.
 
