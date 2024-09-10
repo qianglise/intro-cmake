@@ -117,9 +117,57 @@ Why it is robust to use targets and properties than using variables? Given a tar
    Properties on targets have varied **visibility levels**, which determine how CMake should propagate them between interdependent targets.
 
 
+
 .. typealong:: Understanding visibility levels
 
+	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
+	
+	In this demo, we want to compile a C++ library and an executable. A complete source code and solution are available in the ``content/code/xx_visibility-levels/`` folder.
+	
+	* The library code in the ``account`` subfolder consists of one source (account.cpp) and one header file (account.hpp). This header file and the shared library are needed to produce the ``bank`` executable.
+	* The compiler flag ``-ffast-math`` will be used to propaged throughout the project.
+	* The executable code is in ``bank.cpp``, which includes the header file ``account.hpp``.
+	
+	More description about the source code:
 
-	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will demonstrate their difference in details.
+	1. The ``account`` target declares the ``account.cpp`` source file as ``PRIVATE`` since it is only needed to produce the shared library.
+
+      .. code-block:: cmake
+
+         target_sources(account
+           PRIVATE
+             account.cpp
+           )
+
+	2. The ``-ffast-math`` is instead ``PUBLIC`` as it needs to be propagated to all targets consuming ``account``.
+
+      .. code-block:: cmake
+
+         target_compile_options(account
+           PUBLIC
+             "-ffast-math"
+           )
+
+	3. The ``account`` folder is an include directory with ``INTERFACE`` visibility because only targets consuming ``account`` need to know where ``account.hpp`` is located.
+
+      .. code-block:: cmake
+
+         target_include_directories(account
+           INTERFACE
+             ${CMAKE_CURRENT_SOURCE_DIR}
+           )
+
+	.. callout:: Rule of thumb for visibility settings
+
+	   When working out which visibility settings to use for the properties of your targets you can refer to the following table:
+
+		  ==============  ================ ============
+			Who needs?             Others
+		  --------------  -----------------------------
+		   Target            **YES**           **NO**
+		  ==============  ================ ============
+			**YES**       ``PUBLIC``       ``PRIVATE``
+			**NO**        ``INTERFACE``     N/A
+		  ==============  ================ ============
 
 
