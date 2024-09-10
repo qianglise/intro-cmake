@@ -70,32 +70,6 @@ There are additional commands in the ``target_*`` family:
 
 
 
-Properties
-----------
-
-
-CMake lets you set properties at many different levels of visibility across the project:
-
-- **Global scope**. These are equivalent to variables set in the root ``CMakeLists.txt``. Their use is, however, more powerful as they can be set from *any* leaf ``CMakeLists.txt``.
-- **Directory scope**. These are equivalent to variables set in a given leaf ``CMakeLists.txt``.
-- **Target**. These are the properties set on targets that we discussed above.
-- **Test**.
-- **Source files**. For example, compiler flags.
-- **Cache entries**.
-- **Installed files**.
-
-
-For a complete list of properties known to CMake:
-
-.. code-block:: bash
-
-   $ cmake --help-properties | less
-
-
-You can get the current value of any property with ``get_property`` and set the value of any property with ``set_property``.
-
-
-
 Visibility levels
 -----------------
 
@@ -161,13 +135,41 @@ Why it is robust to use targets and properties than using variables? Given a tar
 
 	   When working out which visibility settings to use for the properties of your targets you can refer to the following table:
 
-		  ==============  ================ ============
-			Who needs?             Others
-		  --------------  -----------------------------
-		   Target            **YES**           **NO**
-		  ==============  ================ ============
-			**YES**       ``PUBLIC``       ``PRIVATE``
-			**NO**        ``INTERFACE``     N/A
-		  ==============  ================ ============
+      ==============  ================ ============
+         Who needs?             Others
+      --------------  -----------------------------
+         Target            **YES**           **NO**
+      ==============  ================ ============
+         **YES**       ``PUBLIC``       ``PRIVATE``
+         **NO**        ``INTERFACE``     N/A
+      ==============  ================ ============
+
+
+
+Properties
+----------
+
+
+CMake lets you set properties at many different levels of visibility across the project:
+
+- **Global scope**. These are equivalent to variables set in the root ``CMakeLists.txt``. Their use is, however, more powerful as they can be set from *any* leaf ``CMakeLists.txt``.
+- **Directory scope**. These are equivalent to variables set in a given leaf ``CMakeLists.txt``.
+- **Target**. These are the properties set on targets that we discussed above.
+- **Test**.
+- **Source files**. For example, compiler flags.
+- **Cache entries**.
+- **Installed files**.
+
+
+For a complete list of properties known to CMake:
+
+.. code-block:: bash
+
+   $ cmake --help-properties | less
+
+
+You can get the current value of any property with ``get_property`` and set the value of any property with ``set_property``.
+
+
 
 
