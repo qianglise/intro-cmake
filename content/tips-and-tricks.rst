@@ -28,6 +28,35 @@ Listing files explicitly also allows to ``grep`` for them in the CMake code to s
 
 
 
+Options and flow control
+------------------------
+
+
+You may want to give users the possibility to decide whether they want to enable an option or not.
+
+.. code-block:: cmake
+
+   # by default this one will be ON
+   option(ENABLE_MPI "Configure for MPI parallelization" ON)
+
+   if(ENABLE_MPI)
+     find_package(MPI REQUIRED COMPONENTS Fortran)
+   else()
+     message(STATUS "no problem, building without MPI")
+   endif()
+
+Now the users can decide:
+
+.. code-block:: console
+
+   $ cmake -S. -Bbuild -DENABLE_MPI=OFF
+
+
+
+
+
+
+
 
 
 
