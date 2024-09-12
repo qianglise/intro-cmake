@@ -53,6 +53,21 @@ Now the users can decide:
 
 
 
+Organizing files into modules
+-----------------------------
+
+
+Modules are collections of functions and macros and are either CMake- or user-defined. CMake comes with a rich ecosystem of modules and you will probably write a few of your own to encapsulate frequently used functions or macros in your CMake scripts.
+
+You can collect related CMake-code into a file called ``my_lengthy_code.cmake`` and then include it in another CMake code as shown below. This can help organizing projects that are growing out of hand and separate concerns.
+
+.. code-block:: cmake
+
+   include(my_lengthy_code)
+
+
+
+
 
 
 
