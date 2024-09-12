@@ -201,23 +201,91 @@ Multiple folders
 ----------------
 
 
+In the code example about the visibility levels, we have split a project into three folders and libraries but we kept one ``CMakeLists.txt``. As the project grows, this becomes impractical for humans (the CMake computer overlords will not mind) and maintenance becomes easier if we split the CMake configuration into multiple ``CMakeLists.txt`` with the help of ``add_subdirectory``. Our goal is to have a ``CMakeLists.txt`` as close as possible to the source files.
+
+.. code-block:: text
+
+   project/
+   ├── CMakeLists.txt           <--- Root
+   ├── external
+   │   ├── CMakeLists.txt       <--- Leaf at level 1
+   └── src
+       ├── CMakeLists.txt       <--- Leaf at level 1
+       ├── evolution
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       ├── initial
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       ├── io
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       └── parser
+           └── CMakeLists.txt   <--- Leaf at level 2
+
+
+Each folder in a multi-folder project will contain a ``CMakeLists.txt``: a source tree with one **root** and many **leaves**.
+
+- The root ``CMakeLists.txt`` will contain the invocation of the ``project`` command: variables and targets declared in the root have effectively global scope.
+- The ``PROJECT_SOURCE_DIR`` will point to the folder containing the root ``CMakeLists.txt``.
+- In order to move between the root and a leaf or between leaves, you will use the ``add_subdirectory`` command.
+
+
+Typically, you only need to pass the first argument: the folder within the build tree will be automatically computed by CMake. We can declare targets at any level, not necessarily the root: a target is visible at the level at which it is declared and all higher levels.
 
 
 
+.. exercise:: Exercise yy: Cellular automata
+
+   Let's work with a project spanning multiple folders. We will implement a relatively simple code to compute and print to screen elementary `cellular automata <https://en.wikipedia.org/wiki/Cellular_automaton#Elementary_cellular_automata>`_. We separate the sources into ``src`` and ``external`` to simulate a nested project which reuses an external project.
+
+   Your goal is to:
+
+   - 1. Build the main executable at ``content/code/yy_automata-cxx/`` for C++ and ``content/code/yy_automata-f/`` for Fortran.
+   - 2. Where are the obtained executables located in the build tree? Remember that CMake generates a build tree mirroring the source tree.
+   - 3. The executable will accept 3 arguments: the length, number of steps, and
+     automaton rule. You can run it with:
+
+     .. code-block:: bash
+
+        $ automata 40 5 30
+
+     The output will be:
+
+     .. code-block:: text
+
+        length: 40
+        number of steps: 5
+        rule: 30
+                            *
+                           ***
+                          **  *
+                         ** ****
+                        **  *   *
+                       ** **** ***
 
 
 
+.. typealong:: The internal dependency tree
+
+   You can visualize the dependencies between targets in the project with Graphviz:
+
+  .. code-block:: bash
+
+     $ cd build
+     $ cmake --graphviz=project.dot ..
+     $ dot -T svg project.dot -o project.svg
+
+  .. figure:: img/graphviz-multiple-folder-project.svg
+     :align: center
+
+     The dependencies between targets in the cellular automata project.
 
 
 
+.. keypoints::
 
-
-
-
-
-
-
-
+   - Using **targets**, you can achieve granular control over how artifacts are built and how their dependencies are handled.
+   - Compiler flags, definitions, source files, include folders, link libraries, and linker options are **properties** of a target.
+   - Avoid using variables to express dependencies between targets: use visibility levels ``PRIVATE``, ``INTERFACE``, ``PUBLIC`` and let CMake figure out the details.
+   - To keep the complexity of the build system at a minimum, each folder in a multi-folder project should have its own CMake script.
 
 
 
