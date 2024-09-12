@@ -44,6 +44,7 @@ In this workshop, you will learn
    cmake-syntax
    hello-ctest
    probing
+   dependencies
    targets
    .. dependencies
    .. fetch-content

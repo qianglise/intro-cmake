@@ -10,8 +10,8 @@ Probing compilation, linking, and execution
 
 .. objectives::
 
-   - Learn how and when to use |execute_process|
-   - Learn how to use |add_custom_command| with targets.
+   - Learn how and when to use ``execute_process``
+   - Learn how to use ``add_custom_command`` with targets.
    - Learn how to test compilation, linking, and execution.
 
 
@@ -25,9 +25,9 @@ Running custom commands at *configure-time*
 
 The most straightforward method is to explicitly run one (or more) child
 process(es) when invoking the ``cmake`` command.  This is achieved with the
-|execute_process| command.
+``execute_process`` command.
 
-.. signature:: |execute_process|
+.. signature:: `execute_process <https://cmake.org/cmake/help/latest/command/execute_process.html>`_ 
 
    .. code-block:: cmake
 
@@ -56,14 +56,14 @@ process(es) when invoking the ``cmake`` command.  This is achieved with the
 
 It is important to note that any command invoked through ``execute_process``
 will only be run at **configure-time**, *i.e.* when running the ``cmake``
-command. You **should not** rely on |execute_process| to update any artifacts at
+command. You **should not** rely on ``execute_process`` to update any artifacts at
 **build-time**.
 
 
-.. exercise:: Exercise 17: Find a Python module
+.. exercise:: Exercise xx: Find a Python module
 
-   In this exercise, we'll use |execute_process| to check whether the `cffi
-   <https://cffi.readthedocs.io/en/latest/index.html>`_ Python module is
+   In this exercise, we'll use `execute_process <https://cmake.org/cmake/help/latest/command/execute_process.html>`_  
+   to check whether the `cffi   <https://cffi.readthedocs.io/en/latest/index.html>`_ Python module is
    installed in your environment. On the command line, you would do:
 
    .. code-block:: bash
@@ -71,8 +71,8 @@ command. You **should not** rely on |execute_process| to update any artifacts at
       $ python -c "import cffi; print(cffi.__version__)"
 
    Your goal is to replicate the same in CMake.
-   The scaffold code is in ``content/code/day-1/17_find_cffi``.
-   You will have to modify the call to |execute_process| to run the command above.
+   The scaffold code is in ``content/code/xx_find_cffi``.
+   You will have to modify the call to ``execute_process`` to run the command above.
 
    A working example is in the ``solution`` subfolder.
 
@@ -85,22 +85,22 @@ dependencies, such as Python. These are conventionally called
 
    $ cmake --help-module FindPython | more
 
-We will revisit uses of |find_package| later on in :ref:`dependencies`.
+We will revisit uses of ``find_package`` later on in :ref:`dependencies`.
 
 
 Custom commands for your targets
 --------------------------------
 
-As mentioned, the main problem of |execute_process| is that it will run a
+As mentioned, the main problem of ``execute_process`` is that it will run a
 command at *configure-time*, when the ``cmake`` command is first invoked.
 It is thus *not* a viable alternative if we intend to perform some specific
 actions depending on targets or make the result of the custom commands a
 dependency for other targets.
 Both cases have real-world examples, such as when using automatically generated
-code. The CMake command |add_custom_command| can be used in some of this
+code. The CMake command ``add_custom_command`` can be used in some of this
 instances.
 
-.. signature:: |add_custom_command|
+.. signature:: `add_custom_command <https://cmake.org/cmake/help/latest/command/add_custom_command.html>`_ 
 
    .. code-block:: cmake
 
@@ -127,14 +127,14 @@ instances.
    - After building, we want to check the size of the static allocations in the
      binary, by invoking the ``size`` command. We use the ``static-size.py`` Python script.
 
-   The scaffold code is in ``content/code/day-1/18_pre_post-f``.
+   The scaffold code is in ``content/code/xx_pre_post-f``.
 
    #. Add CMake commands to build the ``example`` executable from the Fortran
       sources.  Find the text file with the link line under the build folder.
       Hint: have a look in ``CMakeFiles`` and keep in mind the name you gave to
       the target.
-   #. Call |add_custom_command| with ``PRE_LINK`` to invoke the ``echo-file.py`` Python script.
-   #. Call |add_custom_command| with ``POST_BUILD`` to invoke the ``static-size.py`` Python script.
+   #. Call ``add_custom_command`` with ``PRE_LINK`` to invoke the ``echo-file.py`` Python script.
+   #. Call ``add_custom_command`` with ``POST_BUILD`` to invoke the ``static-size.py`` Python script.
 
    A working example is in the ``solution`` subfolder.
 
@@ -160,12 +160,12 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
    the need to test whether some flags are available before using them in your
    build.
 
-   The scaffold code is in ``content/code/day-1/19_check_compiler_flag``.
+   The scaffold code is in ``content/code/xx_check_compiler_flag``.
 
    #. Implement a ``CMakeLists.txt`` to build an executable from the
       ``asan-example.cpp`` source file.
    #. Check that the address sanitizer flags are available with
-      |check_cxx_compiler_flag|. The flags to check are ``-fsanitize=address
+      ``check_cxx_compiler_flag``. The flags to check are ``-fsanitize=address
       -fno-omit-frame-pointer``. Find the command signature with:
 
       .. code-block:: bash
@@ -173,7 +173,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
          $ cmake --help-module CMakeCXXCompilerFlag
 
    #. If the flags do work, add them to the those used to compile the executable
-      target with |target_compile_options|.
+      target with ``target_compile_options``.
 
    A working example is in the ``solution`` subfolder.
 
@@ -184,7 +184,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
    compiling an object files, but also linking an executable and running it
    successfully.
 
-   The scaffold code is in ``content/code/day-1/20_check_source_runs``.
+   The scaffold code is in ``content/code/xx_check_source_runs``.
 
    #. Create an executable target from the source file ``use-uuid.cpp``.
    #. Add a check that linking against the library produces working executables.
@@ -200,7 +200,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
            return 0;
          }
 
-      |check_c_source_runs| requires the test source code to be passed in as
+      ``check_c_source_runs`` requires the test source code to be passed in as
       a *string*. Find the command signature with:
 
       .. code-block:: bash
@@ -209,7 +209,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
 
    #. If the test is successful, link executable target against the UUID
       library: use the ``PkgConfig::UUID`` target as argument to
-      |target_link_libraries|.
+      ``target_link_libraries``.
 
    A working example is in the ``solution`` subfolder.
 
