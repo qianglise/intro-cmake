@@ -263,27 +263,29 @@ Typically, you only need to pass the first argument: the folder within the build
 
 
 
-.. callout:: The internal dependency tree
+.. typealong:: The internal dependency tree
 
-   You can visualize the dependencies between the targets in the project with Graphviz:
+   You can visualize the dependencies between targets in the project with Graphviz:
 
   .. code-block:: bash
 
      $ cd build
      $ cmake --graphviz=project.dot ..
-     $ dot -T svg project.dot -o multiple-folder-project.svg
+     $ dot -T svg project.dot -o project.svg
 
-
-  .. figure:: img/multiple-folder-project.svg
+  .. figure:: img/graphviz-multiple-folder-project.svg
      :align: center
 
      The dependencies between targets in the cellular automata project.
 
 
 
+.. keypoints::
 
-
-
+   - Using **targets**, you can achieve granular control over how artifacts are built and how their dependencies are handled.
+   - Compiler flags, definitions, source files, include folders, link libraries, and linker options are **properties** of a target.
+   - Avoid using variables to express dependencies between targets: use visibility levels ``PRIVATE``, ``INTERFACE``, ``PUBLIC`` and let CMake figure out the details.
+   - To keep the complexity of the build system at a minimum, each folder in a multi-folder project should have its own CMake script.
 
 
 
