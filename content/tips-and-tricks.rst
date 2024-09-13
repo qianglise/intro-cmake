@@ -67,6 +67,36 @@ You can collect related CMake-code into a file called ``my_lengthy_code.cmake`` 
 
 
 
+Variables vs. targets
+---------------------
+
+
+In :ref:`targets` we have motivated why targets are preferable over variables.
+
+When you portion your project into modules, then variable declaration impose an order and the risk is high that somebody will not know about the implicit order and reorder modules one day and the behavior will change.
+
+Try to minimize the use of user-defined variables. They can point to a sub-optimal solution and a better, more state-less, declarative, solution may exist.
+
+
+
+Functions and macros
+--------------------
+
+
+**Functions** and **macros** are built on top of the basic built-in commands and are either CMake- or user-defined. These prove useful to avoid repetition in your CMake scripts. The difference between a function and a macro is their **scope**:
+
+#. Functions have their own scope: variables defined inside a function are not propagated back to the caller.
+#. Macros do not have their own scope: variables from the parent scope can be modified and new variables in the parent scope can be set.
+
+**Prefer functions over macros to minimize side-effects**.
+
+
+
+
+
+
+
+
 
 
 

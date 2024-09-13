@@ -50,6 +50,7 @@ In this workshop, you will learn
    .. fetch-content
    .. python-bindings
    tips-and-tricks
+   additional-topics
 
 
 .. toctree::
