@@ -92,33 +92,68 @@ Functions and macros
 
 
 
+Where to list sources and tests?
+--------------------------------
+
+
+Some projects collect all sources in one file, all tests in another file, and carry them across in variables:
+
+.. code-block:: text
+
+   project/
+   ├── CMakeLists.txt
+   ├── cmake
+   |   ├── sources.cmake
+   |   ├── tests.cmake
+   |   └── definitions.cmake
+   ├── external
+   └── src
+       ├── evolution
+       ├── initial
+       ├── io
+       └── parser
+
+It is recommended to organize the sources like the format below, where sources, definitions, and tests are defined in the "closest" ``CMakeLists.txt`` files.
+
+.. code-block:: text
+
+   project/
+   ├── CMakeLists.txt
+   ├── external
+   │   ├── CMakeLists.txt
+   └── src
+       ├── CMakeLists.txt
+       ├── evolution
+       │   ├── CMakeLists.txt
+       ├── initial
+       │   ├── CMakeLists.txt
+       ├── io
+       │   ├── CMakeLists.txt
+       └── parser
+           └── CMakeLists.txt
+
+
+The reason is that this will minimize side-effects, ordering effects, and simplify maintenance for those who want to add or rename source files: they can do it in one place, close to where they are coding.
 
 
 
+Order and side effects
+----------------------
+
+
+- When portioning your project into modules, design them in a way so that order does not matter (much).
+- This is easier with functions than with macros, and easier with targets than with variables.
+- Avoid variables with parent or global scope. Encapsulate and prefer separation of concerns.
 
 
 
+Where to keep generated files
+-----------------------------
 
 
+CMake allows us to generate files at configure- or build-time. When generating files, we recommend to **always** generate into the build folder, never outside.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The reason is that you always want to maintain the possibility to configure different builds with the same source without having to copy the entire project to a different place.
 
 
 
