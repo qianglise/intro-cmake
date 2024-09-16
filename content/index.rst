@@ -68,11 +68,11 @@ In this workshop, you will learn
 
    20 min ; :doc:`hello-cmake`
    30 min ; :doc:`cmake-syntax`
-   40 min ; :doc:`hello-ctest`
-   40 min ; :doc:`probing`
+   30 min ; :doc:`probing`
+   20 min ; :doc:`dependencies` 
    40 min ; :doc:`targets`
-   35 min ; :doc:`python-bindings`
-   20 min ; :doc:`tips-and-tricks`
+   10 min ; :doc:`tips-and-tricks`
+   10 min ; :doc:`additional-topics`
 
 
 .. toctree::
