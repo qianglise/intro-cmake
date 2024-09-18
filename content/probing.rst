@@ -60,7 +60,7 @@ command. You **should not** rely on ``execute_process`` to update any artifacts 
 **build-time**.
 
 
-.. exercise:: Exercise xx: Find a Python module
+.. exercise:: Exercise 05: Find a Python module
 
    In this exercise, we'll use `execute_process <https://cmake.org/cmake/help/latest/command/execute_process.html>`_  
    to check whether the `cffi   <https://cffi.readthedocs.io/en/latest/index.html>`_ Python module is
@@ -71,7 +71,7 @@ command. You **should not** rely on ``execute_process`` to update any artifacts 
       $ python -c "import cffi; print(cffi.__version__)"
 
    Your goal is to replicate the same in CMake.
-   The scaffold code is in ``content/code/xx_find_cffi``.
+   The scaffold code is in ``content/code/05_find_cffi``.
    You will have to modify the call to ``execute_process`` to run the command above.
 
    A working example is in the ``solution`` subfolder.
@@ -118,7 +118,7 @@ instances.
    and ``PRE_LINK``) or after (with ``POST_BUILD``)
 
 
-.. exercise:: Exercise 18: Before and after build
+.. exercise:: Exercise 06: Before and after build
 
    We want to perform some action before and after building a target, in this case a Fortran executable:
 
@@ -127,7 +127,7 @@ instances.
    - After building, we want to check the size of the static allocations in the
      binary, by invoking the ``size`` command. We use the ``static-size.py`` Python script.
 
-   The scaffold code is in ``content/code/xx_pre_post-f``.
+   The scaffold code is in ``content/code/06_pre_post-f``.
 
    #. Add CMake commands to build the ``example`` executable from the Fortran
       sources.  Find the text file with the link line under the build folder.
@@ -154,13 +154,13 @@ CMake provides modules and commands for these purposes:
 
 In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
 
-.. exercise:: Exercise 19: Check that a compiler accepts a compiler flag
+.. exercise:: Exercise 07: Check that a compiler accepts a compiler flag
 
    Compilers evolve: they add and/or remove flags and sometimes you will face
    the need to test whether some flags are available before using them in your
    build.
 
-   The scaffold code is in ``content/code/xx_check_compiler_flag``.
+   The scaffold code is in ``content/code/07_check_compiler_flag``.
 
    #. Implement a ``CMakeLists.txt`` to build an executable from the
       ``asan-example.cpp`` source file.
@@ -178,13 +178,13 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
    A working example is in the ``solution`` subfolder.
 
 
-.. exercise:: Exercise 20: Testing runtime capabilities
+.. exercise:: Exercise 08: Testing runtime capabilities
 
    Testing that some features will work properly for your code requires not only
    compiling an object files, but also linking an executable and running it
    successfully.
 
-   The scaffold code is in ``content/code/xx_check_source_runs``.
+   The scaffold code is in ``content/code/08_check_source_runs``.
 
    #. Create an executable target from the source file ``use-uuid.cpp``.
    #. Add a check that linking against the library produces working executables.
