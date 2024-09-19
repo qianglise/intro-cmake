@@ -54,32 +54,22 @@ process(es) when invoking the ``cmake`` command.  This is achieved with the
    ``RESULT_VARIABLE``.
 
 
-It is important to note that any command invoked through ``execute_process``
-will only be run at **configure-time**, *i.e.* when running the ``cmake``
-command. You **should not** rely on ``execute_process`` to update any artifacts at
-**build-time**.
+It is important to note that any command invoked through ``execute_process`` will only be run at **configure-time**, *i.e.* when running the ``cmake`` command. You **should not** rely on ``execute_process`` to update any artifacts at **build-time**.
 
 
 .. exercise:: Exercise 06: Find a Python module
 
-   In this exercise, we'll use `execute_process <https://cmake.org/cmake/help/latest/command/execute_process.html>`_  
-   to check whether the `cffi   <https://cffi.readthedocs.io/en/latest/index.html>`_ Python module is
-   installed in your environment. On the command line, you would do:
+   In this exercise, we'll use `execute_process <https://cmake.org/cmake/help/latest/command/execute_process.html>`_ to check whether the `cffi   <https://cffi.readthedocs.io/en/latest/index.html>`_ Python module is installed in your environment. On the command line, you would do:
 
    .. code-block:: bash
 
       $ python -c "import cffi; print(cffi.__version__)"
 
-   Your goal is to replicate the same in CMake.
-   The scaffold code is in ``content/code/06_find_cffi``.
-   You will have to modify the call to ``execute_process`` to run the command above.
+   Your goal is to replicate the same in CMake. The scaffold code is in ``content/code/06_find_cffi``. You will have to modify the call to ``execute_process`` to run the command above.
 
    A working example is in the ``solution`` subfolder.
 
-Note the use of ``find_package(Python REQUIRED)`` to obtain the ``python``
-executable. CMake comes with many modules dedicated to the detection of
-dependencies, such as Python. These are conventionally called
-``Find<dependency>.cmake`` and you can inspect their documentation with:
+Note the use of ``find_package(Python REQUIRED)`` to obtain the ``python`` executable. CMake comes with many modules dedicated to the detection of dependencies, such as Python. These are conventionally called ``Find<dependency>.cmake`` and you can inspect their documentation with:
 
 .. code-block:: bash
 
@@ -91,14 +81,9 @@ We will revisit uses of ``find_package`` later on in :ref:`dependencies`.
 Custom commands for your targets
 --------------------------------
 
-As mentioned, the main problem of ``execute_process`` is that it will run a
-command at *configure-time*, when the ``cmake`` command is first invoked.
-It is thus *not* a viable alternative if we intend to perform some specific
-actions depending on targets or make the result of the custom commands a
-dependency for other targets.
-Both cases have real-world examples, such as when using automatically generated
-code. The CMake command ``add_custom_command`` can be used in some of this
-instances.
+As mentioned, the main problem of ``execute_process`` is that it will run a command at *configure-time*, when the ``cmake`` command is first invoked. It is thus *not* a viable alternative if we intend to perform some specific actions depending on targets or make the result of the custom commands a dependency for other targets.
+
+Both cases have real-world examples, such as when using automatically generated code. The CMake command ``add_custom_command`` can be used in some of this instances.
 
 .. signature:: `add_custom_command <https://cmake.org/cmake/help/latest/command/add_custom_command.html>`_ 
 
@@ -113,26 +98,19 @@ instances.
                    [COMMENT comment]
                    [VERBATIM] [USES_TERMINAL])
 
-   Add one or more custom commands to a target, such as a library or an
-   executable.  The commands can be executed before linking (with ``PRE_BUILD``
-   and ``PRE_LINK``) or after (with ``POST_BUILD``)
+   Add one or more custom commands to a target, such as a library or an executable. The commands can be executed before linking (with ``PRE_BUILD`` and ``PRE_LINK``) or after (with ``POST_BUILD``)
 
 
 .. exercise:: Exercise 07: Before and after build
 
    We want to perform some action before and after building a target, in this case a Fortran executable:
 
-   - Before building, we want to read the link line, as produced by CMake, and
-     echo it to standard output. We use the ``echo-file.py`` Python script.
-   - After building, we want to check the size of the static allocations in the
-     binary, by invoking the ``size`` command. We use the ``static-size.py`` Python script.
+   - Before building, we want to read the link line, as produced by CMake, and echo it to standard output. We use the ``echo-file.py`` Python script.
+   - After building, we want to check the size of the static allocations in the binary, by invoking the ``size`` command. We use the ``static-size.py`` Python script.
 
    The scaffold code is in ``content/code/07_pre_post-f``.
 
-   #. Add CMake commands to build the ``example`` executable from the Fortran
-      sources.  Find the text file with the link line under the build folder.
-      Hint: have a look in ``CMakeFiles`` and keep in mind the name you gave to
-      the target.
+   #. Add CMake commands to build the ``example`` executable from the Fortran sources.  Find the text file with the link line under the build folder. Hint: have a look in ``CMakeFiles`` and keep in mind the name you gave to the target.
    #. Call ``add_custom_command`` with ``PRE_LINK`` to invoke the ``echo-file.py`` Python script.
    #. Call ``add_custom_command`` with ``POST_BUILD`` to invoke the ``static-size.py`` Python script.
 
@@ -142,38 +120,29 @@ instances.
 Testing compilation, linking, and execution
 -------------------------------------------
 
-We also want to be able to run checks on our compilers and linkers. Or check whether a certain library can be used correctly before attempting to build our own artifacts.
-CMake provides modules and commands for these purposes:
+We also want to be able to run checks on our compilers and linkers. Or check whether a certain library can be used correctly before attempting to build our own artifacts. CMake provides modules and commands for these purposes:
 
-- ``Check<LANG>CompilerFlag`` providing the ``check_<LANG>_compiler_flag``
-  function, to check whether a compiler flag is valid for the compiler in use.
+- ``Check<LANG>CompilerFlag`` providing the ``check_<LANG>_compiler_flag`` function, to check whether a compiler flag is valid for the compiler in use.
 - ``Check<LANG>SourceCompiles`` providing the ``check_<LANG>_source_compiles``.
   Which check whether a given source file compiles with the compiler in use.
-- ``Check<LANG>SourceRuns`` providing the ``check_<LANG>_source_runs``, to make
-  sure that a given source snippet compiles, links, and runs.
+- ``Check<LANG>SourceRuns`` providing the ``check_<LANG>_source_runs``, to make sure that a given source snippet compiles, links, and runs.
 
 In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
 
 .. exercise:: Exercise 08: Check that a compiler accepts a compiler flag
 
-   Compilers evolve: they add and/or remove flags and sometimes you will face
-   the need to test whether some flags are available before using them in your
-   build.
+   Compilers evolve: they add and/or remove flags and sometimes you will face the need to test whether some flags are available before using them in your build.
 
    The scaffold code is in ``content/code/08_check_compiler_flag``.
 
-   #. Implement a ``CMakeLists.txt`` to build an executable from the
-      ``asan-example.cpp`` source file.
-   #. Check that the address sanitizer flags are available with
-      ``check_cxx_compiler_flag``. The flags to check are ``-fsanitize=address
-      -fno-omit-frame-pointer``. Find the command signature with:
+   #. Implement a ``CMakeLists.txt`` to build an executable from the ``asan-example.cpp`` source file.
+   #. Check that the address sanitizer flags are available with ``check_cxx_compiler_flag``. The flags to check are ``-fsanitize=address -fno-omit-frame-pointer``. Find the command signature with:
 
       .. code-block:: bash
 
          $ cmake --help-module CMakeCXXCompilerFlag
 
-   #. If the flags do work, add them to the those used to compile the executable
-      target with ``target_compile_options``.
+   #. If the flags do work, add them to the those used to compile the executable target with ``target_compile_options``.
 
    A working example is in the ``solution`` subfolder.
 
@@ -187,8 +156,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
    The scaffold code is in ``content/code/09_check_source_runs``.
 
    #. Create an executable target from the source file ``use-uuid.cpp``.
-   #. Add a check that linking against the library produces working executables.
-      Use the following C code as test:
+   #. Add a check that linking against the library produces working executables. Use the following C code as test:
 
       .. code-block:: c
 
@@ -200,16 +168,13 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
            return 0;
          }
 
-      ``check_c_source_runs`` requires the test source code to be passed in as
-      a *string*. Find the command signature with:
+      ``check_c_source_runs`` requires the test source code to be passed in as a *string*. Find the command signature with:
 
       .. code-block:: bash
 
          $ cmake --help-module CheckCSourceRuns
 
-   #. If the test is successful, link executable target against the UUID
-      library: use the ``PkgConfig::UUID`` target as argument to
-      ``target_link_libraries``.
+   #. If the test is successful, link executable target against the UUID library: use the ``PkgConfig::UUID`` target as argument to ``target_link_libraries``.
 
    A working example is in the ``solution`` subfolder.
 

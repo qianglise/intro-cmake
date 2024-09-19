@@ -192,21 +192,19 @@ The package developers might be already prepared to help you out:
        message(STATUS "Found libuuid")
      endif()
 
-  This was the strategy adopted in :ref:`probing` when testing the use of the
-  UUID library.
+  This was the strategy adopted in :ref:`probing` when testing the use of the UUID library.
 
 
 .. keypoints::
 
    - CMake has a rich ecosystem of modules for finding software dependencies. They are called ``Find<package>.cmake``.
    - The ``Find<package>.cmake`` modules are used through ``find_package(<package>)``.
-   - You can also use the classic Unix tool ``pkg-config`` to find software
-     dependencies, but this is not as robust as the CMake-native
-     ``Find<package>`` modules.
+   - You can also use the classic Unix tool ``pkg-config`` to find software dependencies, but this is not as robust as the CMake-native ``Find<package>`` modules.
 
 
 
 .. rubric:: Footnotes
+
 
 .. [#omp]
 
@@ -216,14 +214,6 @@ The package developers might be already prepared to help you out:
 .. [#verbose]
 
    The way in which to trigger a verbose build depends on the native build tool you are using.
-   For Unix Makefiles:
-
-   .. code-block:: bash
-
-      $ cmake --build build -- VERBOSE=1
-
-   For Ninja:
-
-   .. code-block:: bash
-
-      $ cmake --build build -- -v
+   
+   - For Unix Makefiles: ``$ cmake --build build -- VERBOSE=1``.
+   - For Ninja: ``$ cmake --build build -- -v``.
