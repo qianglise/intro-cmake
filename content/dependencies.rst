@@ -101,7 +101,7 @@ A complete list of ``Find<PackageName>.cmake`` can be found from the command-lin
    We want to compile the following OpenMP sample code: [#omp]_
 
 
-   .. literalinclude:: code/xx_taskloop/solution/taskloop.cpp
+   .. literalinclude:: code/09_taskloop/solution/taskloop.cpp
       :language: c++
 
    Note the usage of the ``taskloop`` construct, which was introduced in OpenMP
@@ -128,9 +128,9 @@ A complete list of ``Find<PackageName>.cmake`` can be found from the command-lin
    We can configure and build verbosely. [#verbose]_
    Notice that compiler flags, include directories, and link libraries are properly resolved by CMake.
 
-   You can find the complete working example in ``content/code/xx_taskloop/solution``.
+   You can find the complete working example in ``content/code/09_taskloop/solution``.
 
-.. exercise:: Exercise 23: Using MPI
+.. exercise:: Exercise 10: Using MPI
 
    In this exercise, you will attempt compiling a "Hello, world" program that
    uses the message passing interface (MPI).
@@ -144,7 +144,7 @@ A complete list of ``Find<PackageName>.cmake`` can be found from the command-lin
 
       .. tab:: C++
 
-         The scaffold project is in ``content/code/xx_mpi-cxx``.
+         The scaffold project is in ``content/code/10_mpi-cxx``.
 
          #. Compile the source file to an executable.
          #. Link against the MPI imported target.
@@ -154,7 +154,7 @@ A complete list of ``Find<PackageName>.cmake`` can be found from the command-lin
 
       .. tab:: Fortran
 
-         The scaffold project is in ``content/code/xx_mpi-f``.
+         The scaffold project is in ``content/code/10_mpi-f``.
 
          #. Compile the source file to an executable.
          #. Link against the MPI imported target.

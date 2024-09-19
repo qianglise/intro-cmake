@@ -43,12 +43,12 @@ In this workshop, you will learn
    hello-cmake
    cmake-syntax
    hello-ctest
-   probing
-   dependencies
    targets
    .. dependencies
    .. fetch-content
    .. python-bindings
+   probing
+   dependencies
    tips-and-tricks
    additional-topics
 
