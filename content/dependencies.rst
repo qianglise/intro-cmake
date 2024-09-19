@@ -100,7 +100,6 @@ A complete list of ``Find<PackageName>.cmake`` can be found from the command-lin
 
    We want to compile the following OpenMP sample code: [#omp]_
 
-
    .. literalinclude:: code/09_taskloop/solution/taskloop.cpp
       :language: c++
 
@@ -206,14 +205,6 @@ The package developers might be already prepared to help you out:
 .. rubric:: Footnotes
 
 
-.. [#omp]
+.. [#omp] Example adapted from page 85 in `OpenMP 4.5 examples <http://www.openmp.org/wp-content/uploads/openmp-examples-4.5.0.pdf>`_.
 
-   Example adapted from page 85 in `OpenMP 4.5 examples
-   <http://www.openmp.org/wp-content/uploads/openmp-examples-4.5.0.pdf>`_.
-
-.. [#verbose]
-
-   The way in which to trigger a verbose build depends on the native build tool you are using.
-   
-   - For Unix Makefiles: ``$ cmake --build build -- VERBOSE=1``.
-   - For Ninja: ``$ cmake --build build -- -v``.
+.. [#verbose] The way in which to trigger a verbose build depends on the native build tool you are using. For Unix Makefiles: ``$ cmake --build build -- VERBOSE=1``, and for Ninja: ``$ cmake --build build -- -v``.
