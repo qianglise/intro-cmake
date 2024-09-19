@@ -42,8 +42,8 @@ In this workshop, you will learn
 
    hello-cmake
    cmake-syntax
-   hello-ctest
    targets
+   .. hello-ctest
    .. dependencies
    .. fetch-content
    .. python-bindings
@@ -68,9 +68,9 @@ In this workshop, you will learn
 
    20 min ; :doc:`hello-cmake`
    30 min ; :doc:`cmake-syntax`
+   50 min ; :doc:`targets`
    30 min ; :doc:`probing`
    20 min ; :doc:`dependencies` 
-   40 min ; :doc:`targets`
    10 min ; :doc:`tips-and-tricks`
    10 min ; :doc:`additional-topics`
 

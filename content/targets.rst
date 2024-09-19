@@ -97,7 +97,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
 
 	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
 		
-	In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/xx_visibility-levels/`` folder.
+	In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/04_visibility-levels/`` folder.
 
 	.. code-block:: bash
 
@@ -232,13 +232,13 @@ Typically, you only need to pass the first argument: the folder within the build
 
 
 
-.. exercise:: Exercise 04: Cellular automata
+.. exercise:: Exercise 05: Cellular automata
 
    Let's work with a project spanning multiple folders. We will implement a relatively simple code to compute and print to screen elementary `cellular automata <https://en.wikipedia.org/wiki/Cellular_automaton#Elementary_cellular_automata>`_. We separate the sources into ``src`` and ``external`` to simulate a nested project which reuses an external project.
 
    Your goal is to:
 
-   - 1. Build the main executable at ``content/code/04_automata-cxx/`` for C++ and ``content/code/04_automata-f/`` for Fortran.
+   - 1. Build the main executable at ``content/code/05_automata-cxx/`` for C++ and ``content/code/05_automata-f/`` for Fortran.
    - 2. Where are the obtained executables located in the build tree? Remember that CMake generates a build tree mirroring the source tree.
    - 3. The executable will accept 3 arguments: the length, number of steps, and
      automaton rule. You can run it with:
