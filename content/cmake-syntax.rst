@@ -13,8 +13,7 @@ CMake syntax
 
 .. objectives::
 
-   - Learn how to define variables with ``set`` and use them with the ``${}``
-     operator for `variable references <https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#variable-references>`_.
+   - Learn how to define variables with ``set`` and use them with the ``${}`` operator for `variable references <https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#variable-references>`_.
    - Learn the syntax for conditionals in CMake: ``if`` - ``elseif`` - ``else`` - ``endif``
    - Learn the syntax for loops in CMake: ``foreach``
    - Learn how CMake structures build artifacts.
@@ -30,6 +29,7 @@ The CMake DSL
 
 
 Remember that the DSL is **case-insensitive**. We will now have a look at its main elements.
+
 
 
 Variables
@@ -93,6 +93,7 @@ Help on a specific built-in variable can be obtained with:
    $ cmake --help-variable PROJECT_BINARY_DIR
 
 
+
 Commands
 ++++++++
 
@@ -119,6 +120,7 @@ Help on a specific built-in command, function or macro can be obtained with:
 .. code-block:: bash
 
    $ cmake --help-command target_link_libraries
+
 
 
 Modules
@@ -170,10 +172,8 @@ Since *all* variables in CMake are strings, the syntax for ``if`` and ``foreach`
 
 The truth value of the conditions in the ``if`` and ``elseif`` blocks is determined by boolean operators. In the CMake DSL:
 
-- True is any expression evaluating to: ``1``, ``ON``, ``TRUE``, ``YES``, and
-  ``Y``.
-- False is any expression evaluating to: ``0``, ``OFF``, ``FALSE``, ``NO``,
-  ``N``, ``IGNORE``, and ``NOTFOUND``.
+- True is any expression evaluating to: ``1``, ``ON``, ``TRUE``, ``YES``, and  ``Y``.
+- False is any expression evaluating to: ``0``, ``OFF``, ``FALSE``, ``NO``,  ``N``, ``IGNORE``, and ``NOTFOUND``.
 
 
 CMake offers boolean operator for string comparisons, such as ``STREQUAL`` for string equality, and for version comparisons, such as ``VERSION_EQUAL``.
@@ -181,8 +181,7 @@ CMake offers boolean operator for string comparisons, such as ``STREQUAL`` for s
 
 .. callout:: Variable expansions in conditionals
 
-   The ``if`` command expands the contents of variables before evaluating their
-   truth value. See `official documentation <https://cmake.org/cmake/help/latest/command/if.html?highlight=#variable-expansion>`_ for further details.
+   The ``if`` command expands the contents of variables before evaluating their truth value. See `official documentation <https://cmake.org/cmake/help/latest/command/if.html?highlight=#variable-expansion>`_ for further details.
 
 
 .. exercise:: Exercise 2: Conditionals in CMake
@@ -233,17 +232,17 @@ The list of items is either space- or ;-separated. ``break()`` and ``continue()`
       build
       ├── CMakeCache.txt
       ├── CMakeFiles
-      │   ├── 3.18.4
-      │   ├── cmake.check_cache
-      │   ├── CMakeDirectoryInformation.cmake
-      │   ├── CMakeOutput.log
-      │   ├── CMakeTmp
-      │   ├── compute-areas.dir
-      │   ├── geometry.dir
-      │   ├── Makefile2
-      │   ├── Makefile.cmake
-      │   ├── progress.marks
-      │   └── TargetDirectories.txt
+      │   ├── 3.18.4
+      │   ├── cmake.check_cache
+      │   ├── CMakeDirectoryInformation.cmake
+      │   ├── CMakeOutput.log
+      │   ├── CMakeTmp
+      │   ├── compute-areas.dir
+      │   ├── geometry.dir
+      │   ├── Makefile2
+      │   ├── Makefile.cmake
+      │   ├── progress.marks
+      │   └── TargetDirectories.txt
       ├── cmake_install.cmake
       ├── compute-areas
       ├── libgeometry.a
