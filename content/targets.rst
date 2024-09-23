@@ -104,11 +104,11 @@ Why it is robust to use targets and properties than using variables? Given a tar
 	   .
 	   ├── CMakeLists.txt
 	   ├── greeting
-	   │   ├── greeting.cpp
-	   │   └── greeting.hpp
+	   │   ├── greeting.cpp
+	   │   └── greeting.hpp
 	   ├── hello_world
-	   │   ├── hello_world.cpp
-	   │   └── hello_world.hpp
+	   │   ├── hello_world.cpp
+	   │   └── hello_world.hpp
 	   ├── main.cpp
 	   └── world
 		   ├── world.cpp
@@ -208,16 +208,16 @@ In the code example about the visibility levels, we have split a project into th
    project/
    ├── CMakeLists.txt           <--- Root
    ├── external
-   │   ├── CMakeLists.txt       <--- Leaf at level 1
+   │   ├── CMakeLists.txt       <--- Leaf at level 1
    └── src
-       ├── CMakeLists.txt       <--- Leaf at level 1
-       ├── evolution
-       │   ├── CMakeLists.txt   <--- Leaf at level 2
-       ├── initial
-       │   ├── CMakeLists.txt   <--- Leaf at level 2
-       ├── io
-       │   ├── CMakeLists.txt   <--- Leaf at level 2
-       └── parser
+       ├── CMakeLists.txt       <--- Leaf at level 1
+       ├── evolution
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       ├── initial
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       ├── io
+       │   ├── CMakeLists.txt   <--- Leaf at level 2
+       └── parser
            └── CMakeLists.txt   <--- Leaf at level 2
 
 
@@ -286,6 +286,4 @@ Typically, you only need to pass the first argument: the folder within the build
    - Compiler flags, definitions, source files, include folders, link libraries, and linker options are **properties** of a target.
    - Avoid using variables to express dependencies between targets: use visibility levels ``PRIVATE``, ``INTERFACE``, ``PUBLIC`` and let CMake figure out the details.
    - To keep the complexity of the build system at a minimum, each folder in a multi-folder project should have its own CMake script.
-
-
 
