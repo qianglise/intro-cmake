@@ -41,6 +41,7 @@ A CMake-based build system:
 - is built on top of well-maintained functionality for automated dependency detection.
 
 
+
 Hello, CMake!
 -------------
 
@@ -53,8 +54,7 @@ Hello, CMake!
 
       .. tab:: C++
 
-         You can find the file with the complete source code in the
-         ``content/code/00_hello-cxx`` folder.
+         You can find the file with the complete source code in the ``content/code/00_hello-cxx`` folder.
 
          .. literalinclude:: code/00_hello-cxx/hello.cpp
             :language: c++
@@ -63,8 +63,7 @@ Hello, CMake!
 
       .. tab:: Fortran
 
-         You can find the file with the complete source code in the
-         ``content/code/00_hello-f`` folder.
+         You can find the file with the complete source code in the ``content/code/00_hello-f`` folder.
 
          .. literalinclude:: code/00_hello-f/hello.f90
             :language: fortran
@@ -104,12 +103,12 @@ Hello, CMake!
          $ cmake --build build
 
 
-Important issues for the ``CMakeLists.txt`` file
-------------------------------------------------
+
+Important issues for ``CMakeLists.txt`` file
+--------------------------------------------
 
 
-1. Any CMake build system will invoke the following commands in its **root**
-   ``CMakeLists.txt``:
+1. Any CMake build system will invoke the following commands in its **root** ``CMakeLists.txt``:
 
    .. signature:: ``cmake_minimum_required``
 
@@ -158,7 +157,7 @@ Important issues for the ``CMakeLists.txt`` file
 
 .. callout:: Put your ``CMakeLists.txt`` under version control
 
-   All CMake-related files will evolve together with your codebase. It's a good    idea to put them under version control. On the contrary, any of the    *generated* native build-system files, *e.g.* ``Makefile``-s, should not be version-controlled.
+   All CMake-related files will evolve together with your codebase. It's a good idea to put them under version control. On the contrary, any of the *generated* native build-system files, *e.g.* ``Makefile``-s, should not be version-controlled.
 
 
 .. typealong:: The command-line interface to CMake
@@ -227,12 +226,12 @@ Important issues for the ``CMakeLists.txt`` file
       $ cmake --help-variable CMAKE_GENERATOR
 
 
+
 A complete toolchain
 --------------------
 
 
-The family of tools provided with CMake offers a complete toolchain to manage the development cycle: from sources to build artifacts, testing, and deployment.
-We refer to these stages as *CMake times* and each tool is appropriate at a specific time. In this workshop, we will discuss:
+The family of tools provided with CMake offers a complete toolchain to manage the development cycle: from sources to build artifacts, testing, and deployment. We refer to these stages as *CMake times* and each tool is appropriate at a specific time. In this workshop, we will discuss:
 
 - **CMake time** or **configure time**. This is the stage when ``cmake`` is invoked to parse the ``CMakeLists.txt`` in your project, configure and generate the build system.
 - **Build time**. This is handled by the native build tools, but, as we have seen, these can be effectively wrapped by ``cmake`` itself.
@@ -242,6 +241,7 @@ We refer to these stages as *CMake times* and each tool is appropriate at a spec
    :align: center
 
    You can manage all these stages of a software project's lifetime with tools provided by CMake. This figure shows all these stages (*times*) and which tool is appropriate for each. This figure is reproduced from `CMake Cookbook <https://github.com/dev-cafe/cmake-cookbook>`_ and is licensed under the terms of the `CC-BY-SA <https://creativecommons.org/licenses/by-sa/4.0/legalcode>`_.
+
 
 
 Producing libraries
