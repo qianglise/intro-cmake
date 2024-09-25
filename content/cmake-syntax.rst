@@ -14,8 +14,8 @@ CMake syntax
 .. objectives::
 
    - Learn how to define variables with ``set`` and use them with the ``${}`` operator for `variable references <https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#variable-references>`_.
-   - Learn the syntax for conditionals in CMake: ``if`` - ``elseif`` - ``else`` - ``endif``
-   - Learn the syntax for loops in CMake: ``foreach``
+   - Learn the syntax for conditionals in CMake: ``if`` - ``elseif`` - ``else`` - ``endif``.
+   - Learn the syntax for loops in CMake: ``foreach``.
    - Learn how CMake structures build artifacts.
    - Learn how to print helpful messages.
    - Learn how to handle user-facing options: ``option`` and the role of CMake cache.
