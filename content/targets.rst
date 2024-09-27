@@ -7,16 +7,17 @@ Target-based build systems with CMake
 
 .. questions::
 
-   - How can we handle more complex projects with CMake?
+   - How can we handle complex projects with CMake?
    - What exactly are **targets** in the CMake domain-specific language (DSL)?
 
 .. objectives::
 
    - Learn that the **basic elements** in CMake are not variables, but targets.
    - Learn about properties of targets and how to use them.
-   - Learn how to use *visibility levels* to express dependencies between targets.
-   - Learn how to work with projects spanning multiple folders.
+   - Learn how to use **visibility levels** to express dependencies between targets.
    - Learn how to handle multiple targets in one project.
+   - Learn how to work with projects spanning multiple folders.
+
 
 
 Real-world projects require more than compiling a few source files into executables and/or libraries. In most cases, you will come to projects comprising hundreds of source files sprawling in a complex source tree.
@@ -40,7 +41,6 @@ A target is the basic element in the CMake DSL, which can be declared by either 
    :align: center
 
     Compile options, definitions, include directories, source files, link libraries, and link options are properties of targets. These properties can be read with ``get_target_property`` and modified with ``set_target_properties``.
-
 
 
 In CMake, the five most used commands used to handle targets are:
@@ -70,7 +70,7 @@ There are additional commands in the ``target_*`` family:
 
 
 
-Visibility levels
+Visibility levels [#adapt_from_CR]_
 -----------------
 
 
@@ -138,7 +138,7 @@ In this source code, the main function links to greeting which links to hello_wo
 Take a look at the ``CMakeLists.txt``:
 
 
-.. literalinclude:: code/xx_visibility-levels/CMakeLists.txt
+.. literalinclude:: code/04_visibility-levels/CMakeLists.txt
    :language: cmake
    :linenos:
    :emphasize-lines: 17
@@ -286,4 +286,9 @@ Typically, you only need to pass the first argument: the folder within the build
    - Compiler flags, definitions, source files, include folders, link libraries, and linker options are **properties** of a target.
    - Avoid using variables to express dependencies between targets: use visibility levels ``PRIVATE``, ``INTERFACE``, ``PUBLIC`` and let CMake figure out the details.
    - To keep the complexity of the build system at a minimum, each folder in a multi-folder project should have its own CMake script.
+
+
+.. rubric:: Footnotes
+
+.. [#adapt_from_CR] This subsection is adapted, with permission, from the `CodeRefinery CMake lesson <https://coderefinery.github.io/cmake-workshop/targets/>`_.
 
