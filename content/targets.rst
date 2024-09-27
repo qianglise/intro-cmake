@@ -99,21 +99,8 @@ Why it is robust to use targets and properties than using variables? Given a tar
 		
 	In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/04_visibility-levels/`` folder.
 
-
-  .. code-block:: text
-
-  .
-  ├── CMakeLists.txt
-  ├── greeting
-  │   ├── greeting.cpp
-  │   └── greeting.hpp
-  ├── hello_world
-  │   ├── hello_world.cpp
-  │   └── hello_world.hpp
-  ├── main.cpp
-  └── world
-      ├── world.cpp
-      └── world.hpp
+   .. figure:: img/visibility-levels.png
+      :align: center
 
 
 In this source code, the main function links to greeting which links to hello_world which links to world.
