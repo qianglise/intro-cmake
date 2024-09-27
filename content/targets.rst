@@ -111,8 +111,8 @@ Why it is robust to use targets and properties than using variables? Given a tar
 	   │   └── hello_world.hpp
 	   ├── main.cpp
 	   └── world
-         ├── world.cpp
-         └── world.hpp
+          ├── world.cpp
+          └── world.hpp
 
 
 In this source code, the main function links to greeting which links to hello_world which links to world.
