@@ -169,6 +169,8 @@ Take a look at the ``CMakeLists.txt``:
          $ cmake -S. -Bbuild_interface
          $ cmake --build build_interface
 
+   5. What will happen if we change the visibility in line 14 of the above code to ``PRIVATE``?
+
 
 
 Properties
