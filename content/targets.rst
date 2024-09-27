@@ -101,6 +101,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
 
 	.. code-block:: text
 
+<<<<<<< HEAD
       .
       ├── CMakeLists.txt
       ├── greeting
@@ -113,6 +114,20 @@ Why it is robust to use targets and properties than using variables? Given a tar
       └── world
           ├── world.cpp
           └── world.hpp
+=======
+	   .
+	   ├── CMakeLists.txt
+	   ├── greeting
+	   │   ├── greeting.cpp
+	   │   └── greeting.hpp
+	   ├── hello_world
+	   │   ├── hello_world.cpp
+	   │   └── hello_world.hpp
+	   ├── main.cpp
+	   └── world
+		   ├── world.cpp
+		   └── world.hpp
+>>>>>>> parent of 66edeba (update typos in the targets episode)
 
 
 In this source code, the main function links to greeting which links to hello_world which links to world.
@@ -273,7 +288,7 @@ Typically, you only need to pass the first argument: the folder within the build
 
      $ cd build
      $ cmake --graphviz=project.dot ..
-     $ dot -T svg project.dot -o project-multiple-folder.svg
+     $ dot -T svg project.dot -o project.svg
 
   .. figure:: img/graphviz-multiple-folder-project.svg
      :align: center
