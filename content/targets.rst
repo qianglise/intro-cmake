@@ -101,18 +101,18 @@ Why it is robust to use targets and properties than using variables? Given a tar
 
 	.. code-block:: bash
 
-	   .
-	   ├── CMakeLists.txt
-	   ├── greeting
-	   │   ├── greeting.cpp
-	   │   └── greeting.hpp
-	   ├── hello_world
-	   │   ├── hello_world.cpp
-	   │   └── hello_world.hpp
-	   ├── main.cpp
-	   └── world
-          ├── world.cpp
-          └── world.hpp
+     .
+     ├── CMakeLists.txt
+     ├── greeting
+     │   ├── greeting.cpp
+     │   └── greeting.hpp
+     ├── hello_world
+     │   ├── hello_world.cpp
+     │   └── hello_world.hpp
+     ├── main.cpp
+     └── world
+         ├── world.cpp
+         └── world.hpp
 
 
 In this source code, the main function links to greeting which links to hello_world which links to world.
