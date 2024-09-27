@@ -28,7 +28,6 @@ These topics include:
 
 
 
-
 Summary of `Intro to CMake`
 ---------------------------
 
