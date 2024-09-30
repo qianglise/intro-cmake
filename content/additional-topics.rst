@@ -1,6 +1,7 @@
 .. _additional-topics:
 
 
+
 Additional Topics
 =================
 
@@ -27,22 +28,35 @@ These topics include:
 
 
 
+Resources and books
+-------------------
+
+
+There are many free resources online regarding CMake:
+
+- The `CMake official documentation
+  <https://cmake.org/cmake/help/latest/index.html>`_.
+- The `CMake tutorial <https://cmake.org/cmake/help/v3.30/guide/tutorial/index.html#>`_.
+- The `HEP Software Foundation <https://hsf-training.github.io/hsf-training-cmake-webpage/>`_ training course.
+- `An Introduction to Modern CMake <https://cliutils.gitlab.io/modern-cmake/README.html#>`__.
+
+
+You can also consult the following books:
+
+- **Professional CMake: A Practical Guide** by Craig Scott.
+- **CMake Cookbook** by Radovan Bast and Roberto Di Remigio. The accompanying repository is on `GitHub <https://github.com/dev-cafe/cmake-cookbook>`_
+
+
 
 Summary of `Intro to CMake`
 ---------------------------
 
+.. keypoints::
 
-
-
-
-
-
-
-
-
-
-
-
-
+   - CMake is a powerful cross-platform build systems generator.
+   - CMake provides a very good reference-style documentation.
+   - For larger projects you probably want to write a lightweight scaffold around CMake.
+   - Many projects use CMake in other words you are not alone if you look for a solution.
+   - [Stack Overflow](https://stackoverflow.com/questions/tagged/cmake) and [GitHub repositories](https://github.com/search?q=cmake&type=repositories) are a good resource for solutions.
 
 
