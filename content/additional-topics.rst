@@ -38,13 +38,13 @@ There are many free resources online regarding CMake:
   <https://cmake.org/cmake/help/latest/index.html>`_.
 - The `CMake tutorial <https://cmake.org/cmake/help/v3.30/guide/tutorial/index.html#>`_.
 - The `HEP Software Foundation <https://hsf-training.github.io/hsf-training-cmake-webpage/>`_ training course.
-- `An Introduction to Modern CMake <https://cliutils.gitlab.io/modern-cmake/README.html#>`__.
+- `An Introduction to Modern CMake <https://cliutils.gitlab.io/modern-cmake/README.html#>`_.
 
 
 You can also consult the following books:
 
 - **Professional CMake: A Practical Guide** by Craig Scott.
-- **CMake Cookbook** by Radovan Bast and Roberto Di Remigio. The accompanying repository is on `GitHub <https://github.com/dev-cafe/cmake-cookbook>`_
+- **CMake Cookbook** by Radovan Bast and Roberto Di Remigio. The accompanying repository is on `GitHub <https://github.com/dev-cafe/cmake-cookbook>`_.
 
 
 
