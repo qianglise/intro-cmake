@@ -62,6 +62,7 @@ If you can assess to the Dardel cluster, you can follow the instructions below t
 - Loading the CMake module using the commands below.
 
 	.. code-block:: bash
+
 		$ module spider cmake
 		$ module load cmake/3.27.7
 		$ cmake --version
@@ -69,11 +70,10 @@ If you can assess to the Dardel cluster, you can follow the instructions below t
 - Cloning the github repository using Git, you can access to the code examples in the `content/code` subdirectory.
 
 	.. code-block:: bash
+
 		$ git clone https://github.com/ENCCS/intro-cmake.git
 		$ cd intro-cmake/content/code/
 
 - Following the steps in hand-on exercises to run the code examples.
-
-
 
 
