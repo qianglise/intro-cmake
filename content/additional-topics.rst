@@ -57,6 +57,6 @@ Summary of `Intro to CMake`
    - CMake provides a very good reference-style documentation.
    - For larger projects you probably want to write a lightweight scaffold around CMake.
    - Many projects use CMake in other words you are not alone if you look for a solution.
-   - [Stack Overflow](https://stackoverflow.com/questions/tagged/cmake) and [GitHub repositories](https://github.com/search?q=cmake&type=repositories) are a good resource for solutions.
+   - `Stack Overflow <https://stackoverflow.com/questions/tagged/cmake>`_ and `GitHub repositories <https://github.com/search?q=cmake&type=repositories>`_ are a good resource for solutions.
 
 
