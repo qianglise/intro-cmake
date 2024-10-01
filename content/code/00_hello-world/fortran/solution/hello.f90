@@ -2,9 +2,9 @@ pure function say_hello() result(message)
 
   implicit none
 
-  character(len=11) :: message
+  character(len=24) :: message
 
-  message = 'Hello world'
+  message = 'Hello world from Fortran'
 
 end function
 
@@ -12,7 +12,7 @@ program hello_world
 
   implicit none
 
-  character(len=11) :: say_hello
+  character(len=24) :: say_hello
 
   print *, say_hello()
 
