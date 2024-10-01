@@ -226,6 +226,7 @@ The list of items is either space- or ;-separated. ``break()`` and ``continue()`
    It is instructive to browse the build folder for the project using the ``tree`` command:
 
    .. code-block:: bash
+
       ml tree/2.1.1
       tree -L 2 build
 
@@ -311,5 +312,4 @@ It should be noted that ``message`` can be a bit awkward to work with, especiall
    - CMake offers a full-fledged DSL which empowers you to write complex ``CMakeLists.txt``.
    - Variables have scoping rules.
    - The structure of the project is mirrored in the build folder.
-
 
