@@ -195,11 +195,11 @@ CMake offers boolean operator for string comparisons, such as ``STREQUAL`` for s
 
       .. tab:: C++
 
-         You can find a scaffold project in the ``content/code/02_conditionals-cxx`` folder. A working solution is in the ``solution`` subfolder.
+         You can find a scaffold project in the ``content/code/02_conditionals/cxx`` folder. A working solution is in the ``solution`` subfolder.
 
       .. tab:: Fortran
 
-         You can find a scaffold project in the ``content/code/02_conditionals-f`` folder. A working solution is in the ``solution`` subfolder.
+         You can find a scaffold project in the ``content/code/02_conditionals/fortran`` folder. A working solution is in the ``solution`` subfolder.
 
 
 You can perform the same operation on a collection of items with ``foreach``:
@@ -223,24 +223,29 @@ The list of items is either space- or ;-separated. ``break()`` and ``continue()`
 
    A working solution is in the ``solution`` subfolder.
 
-   It is instructive to browse the build folder for the project:
+   It is instructive to browse the build folder for the project using the ``tree`` command:
 
    .. code-block:: bash
+      ml tree/2.1.1
+      tree -L 2 build
 
-      $ tree -L 2 build
+   Then you can get the code structure like this:
+
+   .. code-block:: bash
 
       build
       ├── CMakeCache.txt
       ├── CMakeFiles
-      │   ├── 3.18.4
+      │   ├── 3.27.7
       │   ├── cmake.check_cache
+      │   ├── CMakeConfigureLog.yaml
       │   ├── CMakeDirectoryInformation.cmake
-      │   ├── CMakeOutput.log
-      │   ├── CMakeTmp
+      │   ├── CMakeScratch
       │   ├── compute-areas.dir
       │   ├── geometry.dir
       │   ├── Makefile2
       │   ├── Makefile.cmake
+      │   ├── pkgRedirects
       │   ├── progress.marks
       │   └── TargetDirectories.txt
       ├── cmake_install.cmake
