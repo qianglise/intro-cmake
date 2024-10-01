@@ -51,21 +51,20 @@ The CMake modules on the Dardel cluster
 If you can assess to the Dardel cluster, you can follow the instructions below to load the CMake module from before running hand-on code examples.
 
 - `Login to the Dardel cluster <https://www.pdc.kth.se/support/documents/login/ssh_login.html>`_.
-- Coming the directory for this workshop, you can create a folder to keep all your data (replace `XXXXX` with a special string for you).
+- In your home directory, you can create a folder to keep all your data (replace `XXXXX` with a special string for you).
 
 	.. code-block:: bash
 
-		$ cd /cfs/klemming/projects/xxxxxx
-		$ mkdir cmake_XXXXX
-		$ cd cmake_XXXXX/
+		mkdir cmake_XXXXX
+		cd cmake_XXXXX/
 
 - Loading the CMake module using the commands below.
 
 	.. code-block:: bash
 
-		$ module spider cmake
-		$ module load cmake/3.27.7
-		$ cmake --version
+		ml PDC/23.12
+		ml cmake/3.27.7
+		cmake --version
 
 - Cloning the github repository using Git, you can access to the code examples in the `content/code` subdirectory.
 
