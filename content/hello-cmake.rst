@@ -94,13 +94,13 @@ Hello, CMake!
 
       .. code-block:: bash
 
-         $ cmake -S. -Bbuild
+         cmake -S. -Bbuild
 
    6. And finally build our executable:
 
       .. code-block:: bash
 
-         $ cmake --build build
+         cmake --build build
 
 
 
