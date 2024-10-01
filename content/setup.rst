@@ -70,8 +70,8 @@ If you can assess to the Dardel cluster, you can follow the instructions below t
 
 	.. code-block:: bash
 
-		$ git clone https://github.com/ENCCS/intro-cmake.git
-		$ cd intro-cmake/content/code/
+		git clone https://github.com/ENCCS/intro-cmake.git
+		cd intro-cmake/content/code/
 
 - Following the steps in hand-on exercises to run the code examples.
 

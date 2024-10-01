@@ -40,7 +40,7 @@ These are either CMake- or user-defined variables. You can obtain the list of CM
 
 .. code-block:: bash
 
-   $ cmake --help-variable-list
+   cmake --help-variable-list
 
 You can create a new variable with the ``set`` command:
 
@@ -90,7 +90,7 @@ Help on a specific built-in variable can be obtained with:
 
 .. code-block:: bash
 
-   $ cmake --help-variable PROJECT_BINARY_DIR
+   cmake --help-variable PROJECT_BINARY_DIR
 
 
 
@@ -104,7 +104,7 @@ You can find a complete list of available commands with:
 
 .. code-block:: bash
 
-   $ cmake --help-command-list
+   cmake --help-command-list
 
 
 **Functions** and **macros** are built on top of the basic built-in commands and are either CMake- or user-defined. These prove useful to avoid repetition in your CMake scripts.
@@ -119,7 +119,7 @@ Help on a specific built-in command, function or macro can be obtained with:
 
 .. code-block:: bash
 
-   $ cmake --help-command target_link_libraries
+   cmake --help-command target_link_libraries
 
 
 
@@ -140,13 +140,13 @@ The full list of built-in modules is available with:
 
 .. code-block:: bash
 
-   $ cmake --help-module-list
+   cmake --help-module-list
 
 Help on a specific built-in module can be obtained with:
 
 .. code-block:: bash
 
-   $ cmake --help-module CMakePrintHelpers
+   cmake --help-module CMakePrintHelpers
 
 
 

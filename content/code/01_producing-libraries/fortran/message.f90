@@ -4,7 +4,7 @@ module messaging
 
   public Messenger
   type Messenger
-    character(len=19) :: message_
+    character(len=32) :: message_
   end type
 
   public print_message
