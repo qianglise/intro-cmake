@@ -155,6 +155,7 @@ Important issues for ``CMakeLists.txt`` file
 
 4. Using CMake you can abstract the generation of the build system and also the invocation of the build tools.
 
+
 .. callout:: Put your ``CMakeLists.txt`` under version control
 
    All CMake-related files will evolve together with your codebase. It's a good idea to put them under version control. On the contrary, any of the *generated* native build-system files, *e.g.* ``Makefile``-s, should not be version-controlled.
@@ -168,7 +169,7 @@ Important issues for ``CMakeLists.txt`` file
 
    .. code-block:: bash
 
-      $ cmake --help
+      cmake --help
 
    This will output quite a number of options to your screen. We can analyze the last few lines first:
 
@@ -199,31 +200,31 @@ Important issues for ``CMakeLists.txt`` file
 
    .. code-block:: bash
 
-      $ cmake -S. -Bbuild
+      cmake -S. -Bbuild
 
-   To switch to another generator, we will use the ``-G`` switch:
+   To switch to another generator, we will use the ``-G`` switch (make sure that the Ninja is correctly built before running the command below):
 
    .. code-block:: bash
 
-      $ cmake -S. -Bbuild -GNinja
+      cmake -S. -Bbuild -GNinja
 
    Options to be used at build-system generation are passed with the ``-D`` switch. For example, to change compilers:
 
    .. code-block:: bash
 
-      $ cmake -S. -Bbuild -GNinja -DCMAKE_CXX_COMPILER=clang++
+      cmake -S. -Bbuild -GNinja -DCMAKE_CXX_COMPILER=clang++
 
    Finally, you can access to the full CMake manual with:
 
    .. code-block:: bash
 
-      $ cmake --help-full
+      cmake --help-full
 
    You can also inquire about a specific module, command or variable:
 
    .. code-block:: bash
 
-      $ cmake --help-variable CMAKE_GENERATOR
+      cmake --help-variable CMAKE_GENERATOR
 
 
 
