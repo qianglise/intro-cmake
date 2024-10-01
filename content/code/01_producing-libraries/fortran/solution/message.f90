@@ -4,7 +4,7 @@ module messaging
 
   public Messenger
   type Messenger
-    character(len=19) :: message_
+    character(len=32) :: message_
   end type
 
   public print_message
@@ -16,7 +16,7 @@ contains
   pure function print_message(postman) result(m)
 
     type(Messenger), intent(in) :: postman
-    character(len=19) :: m
+    character(len=32) :: m
 
     m = postman%message_
 

@@ -16,7 +16,7 @@ contains
   pure function print_message(postman) result(m)
 
     type(Messenger), intent(in) :: postman
-    character(len=19) :: m
+    character(len=32) :: m
 
     m = postman%message_
 
