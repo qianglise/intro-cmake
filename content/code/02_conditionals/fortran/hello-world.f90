@@ -6,10 +6,10 @@ program hello_world
 
   type(Messenger) :: hello, bye
 
-  hello%message_ = 'Hello, CMake world!'
+  hello%message_ = 'Hello, CMake world from Fortran!'
   print *, print_message(hello)
 
-  bye%message_ = 'Bye, CMake world!'
+  bye%message_ = 'Bye, CMake world from Fortran!'
   print *, print_message(bye)
 
 end program
