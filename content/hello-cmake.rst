@@ -281,7 +281,7 @@ You can link libraries into executables with ``target_link_libraries``:
 
       .. tab:: C++
 
-         You can find a scaffold project in the ``content/code/01_libraries-cxx`` folder.
+         You can find a scaffold project in the ``content/code/01_producing-libraries/cxx`` folder.
 
          #. Write a ``CMakeLists.txt`` to compile the source files ``Message.hpp`` and  ``Message.cpp`` into a library. **DO NOT** specify the type of library, shared or static, explicitly.
          #. Add an executable from the ``hello-world.cpp`` source file.
@@ -291,7 +291,7 @@ You can link libraries into executables with ``target_link_libraries``:
 
       .. tab:: Fortran
 
-         You can find a scaffold project in the ``content/code/01_libraries-f`` folder.
+         You can find a scaffold project in the ``content/code/01_producing-libraries/fortran`` folder.
 
          #. Write a ``CMakeLists.txt`` to compile the source files ``message.f90`` into a library. **DO NOT** specify the type of library shared or static, explicitly.
          #. Add an executable from the ``hello-world.f90`` source file.
