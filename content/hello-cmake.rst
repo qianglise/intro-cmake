@@ -54,18 +54,18 @@ Hello, CMake!
 
       .. tab:: C++
 
-         You can find the file with the complete source code in the ``content/code/00_hello-cxx`` folder.
+         You can find the file with the complete source code in the ``content/code/00_hello-world/cxx`` folder.
 
-         .. literalinclude:: code/00_hello-cxx/hello.cpp
+         .. literalinclude:: code/00_hello-world/cxx/hello.cpp
             :language: c++
 
          A working solution is in the ``solution`` subfolder.
 
       .. tab:: Fortran
 
-         You can find the file with the complete source code in the ``content/code/00_hello-f`` folder.
+         You can find the file with the complete source code in the ``content/code/00_hello-world/fortran`` folder.
 
-         .. literalinclude:: code/00_hello-f/hello.f90
+         .. literalinclude:: code/00_hello-world/fortran/hello.f90
             :language: fortran
 
          A working solution is in the ``solution`` subfolder.
