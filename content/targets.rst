@@ -70,7 +70,7 @@ There are additional commands in the ``target_*`` family:
 
 
 
-Visibility levels [#adapt_from_CR]_
+Visibility levels
 -----------------
 
 
@@ -91,73 +91,67 @@ Why it is robust to use targets and properties than using variables? Given a tar
    Properties on targets have varied **visibility levels**, which determine how CMake should propagate them between interdependent targets.
 
 
+.. typealong:: Understanding visibility levels
 
-.. callout:: Understanding visibility levels
+   Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
 
+   A complete source code is available in the ``content/code/04_visibility-levels/`` folder.
+	
+   In this code example, we want to compile a C++ library and an executable:
 
-	Visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` are very powerful and herein we will briefly demonstrate their difference.
-		
-	In this demo, we split the source code into 3 libraries and all files are available in the ``content/code/04_visibility-levels/`` folder.
+      - The library code is in the ``account`` subfolder. It consists of one source (``account.cpp``) and one header file (``account.hpp``).
+      - The header file and the shared library are needed for the ``bank.cpp`` to produce the ``bank`` executable.
+      - We also want to use the ``-ffast-math`` compiler flag and propagate it throughout the project.
 
-   .. figure:: img/visibility-levels.png
-      :align: center
-
-
-In this source code, the main function links to greeting which links to hello_world which links to world.
-
-
-.. typealong:: The internal dependency tree
-
-   If you have installed ``Graphviz``, you can visualize the dependencies between these targets:
-
-   .. code-block:: console
-
-      $ cd build
-      $ cmake --graphviz=project.dot ..
-      $ dot -T svg project.dot -o graphviz-greeting-hello-world.svg
-
-   .. figure:: img/graphviz-greeting-hello-world.svg
-      :align: center
-
-      The dependencies between the four targets in the code example.
- 
+   Thus code structure is arranged in the following format:
 
 
-Take a look at the ``CMakeLists.txt``:
+   1. The ``account`` target declares the ``account.cpp`` source file as ``PRIVATE`` since it is only needed to produce the shared library.
+
+      .. code-block:: cmake
+
+         target_sources(account
+           PRIVATE
+             account.cpp
+           )
+
+   2. The ``-ffast-math`` is instead ``PUBLIC`` as since it needs to be propagated to all targets consuming ``account``.
+
+      .. code-block:: cmake
+
+         target_compile_options(account
+           PUBLIC
+             "-ffast-math"
+           )
+
+   3. The ``account`` folder is an include directory with ``INTERFACE``
+      visibility because only targets consuming ``account`` need to know where
+      ``account.hpp`` is located.
+
+      .. code-block:: cmake
+
+         target_include_directories(account
+           INTERFACE
+             ${CMAKE_CURRENT_SOURCE_DIR}
+           )
 
 
-.. literalinclude:: code/04_visibility-levels/CMakeLists.txt
-   :language: cmake
-   :linenos:
-   :emphasize-lines: 17
+.. callout:: Rule of thumb for visibility settings
+
+   When working out which visibility settings to use for the properties of your
+   targets you can refer to the following table:
+
+      ==============  ================ ============
+        Who needs?             Others
+      --------------  -----------------------------
+       Target            **YES**           **NO**
+      ==============  ================ ============
+         **YES**         ``PUBLIC``     ``PRIVATE``
+          **NO**       ``INTERFACE``        N/A
+      ==============  ================ ============
 
 
-.. exercise:: Testing the 3 different visibility levels
-
-   1. Browse, configure, build, and run the code.
-
-   2. Uncomment the highlighted line (line 17) with ``target_compile_definitions``, configure into a fresh folder, and build using the commands below. You will see that the definition is used in ``world.cpp`` but nowhere else.
-
-      .. code-block:: console
-
-         $ cmake -S. -Bbuild_private
-         $ cmake --build build_private
-
-   3. Change the definition to ``PUBLIC``, configure into a fresh folder, and build. You will see that the definition is used both in ``world.cpp`` and ``hello_world.cpp``.
-
-      .. code-block:: console
-
-         $ cmake -S. -Bbuild_public
-         $ cmake --build build_public
-
-   4. Then change the definition to ``INTERFACE``, configure into a fresh folder, and build. You will see that the definition is used only in ``hello_world.cpp`` but not in ``world.cpp``.
-
-      .. code-block:: console
-
-         $ cmake -S. -Bbuild_interface
-         $ cmake --build build_interface
-
-   5. What will happen if we change the visibility in line 14 of the above code to ``PRIVATE``?
+An additional code example to demonstrate the difference of the visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` is available in the `CodeRefinery CMake Workshop <https://coderefinery.github.io/cmake-workshop/targets/#visibility-levels>`_.
 
 
 
@@ -276,9 +270,4 @@ Typically, you only need to pass the first argument: the folder within the build
    - Compiler flags, definitions, source files, include folders, link libraries, and linker options are **properties** of a target.
    - Avoid using variables to express dependencies between targets: use visibility levels ``PRIVATE``, ``INTERFACE``, ``PUBLIC`` and let CMake figure out the details.
    - To keep the complexity of the build system at a minimum, each folder in a multi-folder project should have its own CMake script.
-
-
-.. rubric:: Footnotes
-
-.. [#adapt_from_CR] This subsection is adapted, with permission, from the `CodeRefinery CMake lesson <https://coderefinery.github.io/cmake-workshop/targets/>`_.
 
