@@ -151,7 +151,7 @@ Why it is robust to use targets and properties than using variables? Given a tar
       ==============  ================ ============
 
 
-An additional code example to demonstrate the difference of the visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` is available in the `CodeRefinery CMake Workshop <https://coderefinery.github.io/cmake-workshop/targets/#visibility-levels>`_.
+An additional code example to demonstrate the difference of the visibility levels ``PRIVATE``, ``PUBLIC``, or ``INTERFACE`` is available in the `CodeRefinery CMake Workshop <https://coderefinery.github.io/cmake-workshop/targets/#visibility-levels>`_ lesson materials.
 
 
 
