@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(hello-mpi hello-mpi.cpp)
 
-# FIXME link hello-mpi with the imported targett
+# FIXME link hello-mpi with the imported target
 target_link_libraries(hello-mpi
      ...
   )

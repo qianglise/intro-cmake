@@ -140,7 +140,7 @@ In all cases, ``<LANG>`` can be one of ``CXX``, ``C`` or ``Fortran``.
 
       .. code-block:: bash
 
-         $ cmake --help-module CMakeCXXCompilerFlag
+         $ cmake --help-module CheckCXXCompilerFlag
 
    #. If the flags do work, add them to the those used to compile the executable target with ``target_compile_options``.
 
