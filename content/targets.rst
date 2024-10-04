@@ -212,6 +212,23 @@ Each folder in a multi-folder project will contain a ``CMakeLists.txt``: a sourc
 - In order to move between the root and a leaf or between leaves, you will use the ``add_subdirectory`` command.
 
 
+.. typealong:: The internal dependency tree
+
+   You can visualize the dependencies between targets in the project with Graphviz (make sure that you have installed the Graphviz package):
+
+  .. code-block:: bash
+
+     $ cd build
+     $ cmake --graphviz=project.dot ..
+     $ dot -T svg project.dot -o project.svg
+
+  .. figure:: img/graphviz-multiple-folder-project.svg
+     :align: center
+
+     The dependencies between targets in the cellular automata project.
+
+
+
 Typically, you only need to pass the first argument: the folder within the build tree will be automatically computed by CMake. We can declare targets at any level, not necessarily the root: a target is visible at the level at which it is declared and all higher levels.
 
 
@@ -244,23 +261,6 @@ Typically, you only need to pass the first argument: the folder within the build
                          ** ****
                         **  *   *
                        ** **** ***
-
-
-
-.. typealong:: The internal dependency tree
-
-   You can visualize the dependencies between targets in the project with Graphviz:
-
-  .. code-block:: bash
-
-     $ cd build
-     $ cmake --graphviz=project.dot ..
-     $ dot -T svg project.dot -o project.svg
-
-  .. figure:: img/graphviz-multiple-folder-project.svg
-     :align: center
-
-     The dependencies between targets in the cellular automata project.
 
 
 
