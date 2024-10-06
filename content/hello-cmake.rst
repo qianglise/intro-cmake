@@ -158,7 +158,7 @@ Important issues for ``CMakeLists.txt`` file
 
 .. callout:: Put your ``CMakeLists.txt`` under version control
 
-   All CMake-related files will evolve together with your codebase. It's a good idea to put them under version control. On the contrary, any of the *generated* native build-system files, *e.g.* ``Makefile``-s, should not be version-controlled.
+   All CMake-related files will evolve together with your codebase. It's a good idea to put them under `version control <https://coderefinery.github.io/git-intro/>`_. On the contrary, any of the *generated* native build-system files, *e.g.* ``Makefile``-s, should not be version-controlled.
 
 
 .. typealong:: The command-line interface to CMake
