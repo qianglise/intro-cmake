@@ -13,7 +13,7 @@ From sources to executables
    - Learn what tools are available in the CMake suite.
    - Learn how to write a simple ``CMakeLists.txt``.
    - Learn the difference between **build systems**, **build tools**, and **build system generator**.
-   - Learn to distinguish between *configuration*, *generation*, and **build* time.
+   - Learn to distinguish between *configuration*, *generation*, and *build* time.
  
 
 

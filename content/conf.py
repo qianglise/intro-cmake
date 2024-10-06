@@ -21,7 +21,7 @@ project = "Introduction to CMake"
 copyright = "2024, EuroCC National Competence Centre Sweden"
 author = "The contributors"
 github_user = "ENCCS"
-github_repo_name = ""  # auto-detected from dirname if blank
+github_repo_name = "intro-cmake"  # auto-detected from dirname if blank
 github_version = "main"
 conf_py_path = "/content/"  # with leading and trailing slash
 
