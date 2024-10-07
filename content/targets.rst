@@ -185,7 +185,7 @@ Multiple folders
 ----------------
 
 
-In the code example about the visibility levels, we have split a project into three folders and libraries but we kept one ``CMakeLists.txt``. As the project grows, this becomes impractical for humans (the CMake computer overlords will not mind) and maintenance becomes easier if we split the CMake configuration into multiple ``CMakeLists.txt`` with the help of ``add_subdirectory``. Our goal is to have a ``CMakeLists.txt`` as close as possible to the source files.
+In the code example about the visibility levels, we have two ``CMakeLists.txt`` files, one in the ``account`` subfolder and one in the main folder. This enables the code maintenance being easier if we split the CMake configuration into multiple ``CMakeLists.txt`` with the help of ``add_subdirectory``. Our goal is to have multiple ``CMakeLists.txt`` files as close as possible to the source files.
 
 .. code-block:: text
 
@@ -212,22 +212,6 @@ Each folder in a multi-folder project will contain a ``CMakeLists.txt``: a sourc
 - In order to move between the root and a leaf or between leaves, you will use the ``add_subdirectory`` command.
 
 
-.. typealong:: The internal dependency tree
-
-   You can visualize the dependencies between targets in the project with Graphviz (make sure that you have installed the Graphviz package):
-
-  .. code-block:: bash
-
-     $ cd build
-     $ cmake --graphviz=project.dot ..
-     $ dot -T svg project.dot -o project.svg
-
-  .. figure:: img/graphviz-multiple-folder-project.svg
-     :align: center
-
-     The dependencies between targets in the cellular automata project.
-
-
 
 Typically, you only need to pass the first argument: the folder within the build tree will be automatically computed by CMake. We can declare targets at any level, not necessarily the root: a target is visible at the level at which it is declared and all higher levels.
 
@@ -239,7 +223,7 @@ Typically, you only need to pass the first argument: the folder within the build
 
    Your goal is to:
 
-   - 1. Build the main executable at ``content/code/05_automata-cxx/`` for C++ and ``content/code/05_automata-f/`` for Fortran.
+   - 1. Build the main executable at ``content/code/05_automata/cxx/`` for C++ and ``content/code/05_automata/fortran/`` for Fortran.
    - 2. Where are the obtained executables located in the build tree? Remember that CMake generates a build tree mirroring the source tree.
    - 3. The executable will accept 3 arguments: the length, number of steps, and
      automaton rule. You can run it with:
@@ -261,6 +245,21 @@ Typically, you only need to pass the first argument: the folder within the build
                          ** ****
                         **  *   *
                        ** **** ***
+
+   .. typealong:: The internal dependency tree
+
+      You can visualize the dependencies between targets in the project with Graphviz (make sure that you have installed the Graphviz package):
+
+   .. code-block:: bash
+
+      $ cd build
+      $ cmake --graphviz=project.dot ..
+      $ dot -T svg project.dot -o project.svg
+
+   .. figure:: img/graphviz-multiple-folder-project.svg
+      :align: center
+
+      The dependencies between targets in the cellular automata project.
 
 
 
