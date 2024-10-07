@@ -250,16 +250,16 @@ Typically, you only need to pass the first argument: the folder within the build
 
       You can visualize the dependencies between targets in the project with Graphviz (make sure that you have installed the Graphviz package):
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      $ cd build
-      $ cmake --graphviz=project.dot ..
-      $ dot -T svg project.dot -o project.svg
+         $ cd build
+         $ cmake --graphviz=project.dot ..
+         $ dot -T svg project.dot -o project.svg
 
-   .. figure:: img/graphviz-multiple-folder-project.svg
-      :align: center
+      .. figure:: img/graphviz-multiple-folder-project.svg
+         :align: center
 
-      The dependencies between targets in the cellular automata project.
+         The dependencies between targets in the cellular automata project.
 
 
 
